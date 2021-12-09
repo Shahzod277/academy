@@ -1,9 +1,14 @@
+import Sidebar from "./components/sidebar/sidebar";
+import './app.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-          <span>Hello World!</span>
+          <div className = "container">
+              <Sidebar />
+              <div className = "otherPages"> other pages</div>
+          </div>
       </header>
     </div>
   );
