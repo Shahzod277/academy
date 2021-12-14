@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uz.jurayev.academy.domain.Nationality;
 import uz.jurayev.academy.model.Result;
-import uz.jurayev.academy.service.NationalityServiceImpl;
+import uz.jurayev.academy.service.impl.NationalityServiceImpl;
 
 @RequiredArgsConstructor
 @RestController
