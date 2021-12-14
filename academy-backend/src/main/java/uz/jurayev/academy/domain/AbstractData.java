@@ -19,7 +19,7 @@ import java.util.Objects;
 public class AbstractData {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")

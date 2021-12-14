@@ -30,23 +30,20 @@ public class LostBreadWinnerController {
     }
 
     @GetMapping("/{id}")
-    public HttpEntity<?> getOne(@PathVariable Integer id) {
+    public HttpEntity<?> getOne(@PathVariable Long id) {
         LostBreadwinner breadwinner = lostBreadWinnerSerivce.getOne(id);
         return ResponseEntity.status(breadwinner != null ? 202 : 409).body(breadwinner);
     }
 
     @PutMapping("/{id}")
-    public HttpEntity<?> edit(@PathVariable Integer id, @RequestBody LostBreadwinner breadwinner) {
+    public HttpEntity<?> edit(@PathVariable Long id, @RequestBody LostBreadwinner breadwinner) {
         LostBreadwinner breadwinnerEdit = lostBreadWinnerSerivce.edit(id, breadwinner);
         return ResponseEntity.status(breadwinnerEdit != null ? 202 : 409).body(breadwinnerEdit);
     }
 
     @DeleteMapping("/{id}")
-    public HttpEntity<?> delete(@PathVariable Integer id) {
-        boolean delete = lostBreadWinnerSerivce.delete(id);
-        if (delete)
-            return ResponseEntity.noContent().build();
-        return ResponseEntity.notFound().build();
-
+    public HttpEntity<?> delete(@PathVariable Long id){
+        Result delete = lostBreadWinnerSerivce.delete(id);
+        return ResponseEntity.status(delete.getSuccess() ? 201 : 409).body(delete);
     }
 }

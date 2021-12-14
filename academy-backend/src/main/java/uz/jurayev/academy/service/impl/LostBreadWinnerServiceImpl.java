@@ -17,14 +17,14 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class LostBreadWinnerServiceImpl implements LostBreadWinnerSerivce {
 
-    final private LostBreadwinnerRepository LostBreadwinnerRepository;
+    final private LostBreadwinnerRepository lostBreadwinnerRepository;
 
     @Override
     public Result Add(LostBreadwinner breadwinner) {
-        if (!LostBreadwinnerRepository.existsByName(breadwinner.getName())) {
-            LostBreadwinner LostBreadwinner = new LostBreadwinner();
-            LostBreadwinner.setName(breadwinner.getName());
-            LostBreadwinnerRepository.save(LostBreadwinner);
+        if (!lostBreadwinnerRepository.existsByName(breadwinner.getName())) {
+            LostBreadwinner lostBreadwinner = new LostBreadwinner();
+            lostBreadwinner.setName(breadwinner.getName());
+            lostBreadwinnerRepository.save(lostBreadwinner);
             return new Result("Saved!", true);
         }
         return new Result("Bunday LostBreadwinnerlik turi bor!", false);
@@ -33,34 +33,34 @@ public class LostBreadWinnerServiceImpl implements LostBreadWinnerSerivce {
     @Override
     public List<LostBreadwinner> getAll(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        Page<LostBreadwinner> lostBreadwinners = LostBreadwinnerRepository.findAll(pageable);
+        Page<LostBreadwinner> lostBreadwinners = lostBreadwinnerRepository.findAll(pageable);
         return lostBreadwinners.getContent();
     }
 
     @Override
-    public LostBreadwinner getOne(Integer id) {
-        Optional<LostBreadwinner> byId = LostBreadwinnerRepository.findById(id);
+    public LostBreadwinner getOne(Long id) {
+        Optional<LostBreadwinner> byId = lostBreadwinnerRepository.findById(id);
         return byId.orElse(null);
     }
 
     @Override
-    public LostBreadwinner edit(Integer id, LostBreadwinner lostBreadwinner) {
-        Optional<LostBreadwinner> byId = LostBreadwinnerRepository.findById(id);
+    public LostBreadwinner edit(Long id, LostBreadwinner lostBreadwinner) {
+        Optional<LostBreadwinner> byId = lostBreadwinnerRepository.findById(id);
         if (byId.isPresent()) {
-            LostBreadwinner lostBreadwinnerEdit = new LostBreadwinner();
+            LostBreadwinner lostBreadwinnerEdit = byId.get();
             lostBreadwinnerEdit.setName(lostBreadwinner.getName());
-            return LostBreadwinnerRepository.save(lostBreadwinnerEdit);
+            return lostBreadwinnerRepository.save(lostBreadwinnerEdit);
         }
         return null;
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public Result delete(Long id) {
         try {
-            LostBreadwinnerRepository.deleteById(id);
-            return true;
-        } catch (Exception e) {
-            return false;
+            lostBreadwinnerRepository.deleteById(id);
+            return new Result("deleted",true);
+        }catch (Exception e){
+            return new Result("Xato!",false);
         }
     }
 }

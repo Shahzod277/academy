@@ -11,9 +11,9 @@ public interface AddressService {
 
     List<Address> getAll(int page, int size);
 
-    Address getOne(Integer id);
+    Address getOne(Long id);
 
-    boolean delete(Integer id);
+    boolean delete(Long id);
 
-    Address edit(Integer id, AddressDTO addressDTO);
+    Address edit(Long id, AddressDTO addressDTO);
 }

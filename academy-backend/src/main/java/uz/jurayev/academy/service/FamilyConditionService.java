@@ -11,10 +11,10 @@ public interface FamilyConditionService {
 
     List<FamilyCondition> getAll(int page, int size);
 
-    FamilyCondition getOne(Integer id);
+    FamilyCondition getOne(Long id);
 
-    FamilyCondition edit(Integer id, FamilyCondition condition);
+    FamilyCondition edit(Long id, FamilyCondition condition);
 
-    boolean delete(Integer id);
+    Result delete(Long id);
 
 }

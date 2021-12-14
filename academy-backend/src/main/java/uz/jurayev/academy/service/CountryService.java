@@ -9,8 +9,8 @@ public interface CountryService {
 
     Result addCountry(Country country);
     List<Country> getAll(int page, int size);
-    Country getOne(Integer id);
-    Country edit(Integer id, Country country);
-    boolean delete(Integer id);
+    Country getOne(Long id);
+    Country edit(Long id, Country country);
+    boolean delete(Long id);
 
 }

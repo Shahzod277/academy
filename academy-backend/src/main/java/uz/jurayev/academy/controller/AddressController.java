@@ -33,13 +33,13 @@ public class AddressController {
     }
 
     @GetMapping("/{id}")
-    public HttpEntity<?> getOne(@PathVariable Integer id) {
+    public HttpEntity<?> getOne(@PathVariable Long id) {
         Address address = addressService.getOne(id);
         return ResponseEntity.status(address != null ? 201 : 409).body(address);
     }
 
     @DeleteMapping("/{id}")
-    public HttpEntity<?> delete(@PathVariable Integer id) {
+    public HttpEntity<?> delete(@PathVariable Long id) {
         boolean delete = addressService.delete(id);
         if (delete)
             return ResponseEntity.noContent().build();
@@ -47,7 +47,7 @@ public class AddressController {
     }
 
     @PutMapping("/{id}")
-    public HttpEntity<?> edit(@PathVariable Integer id, @RequestBody AddressDTO addressDTO) {
+    public HttpEntity<?> edit(@PathVariable Long id, @RequestBody AddressDTO addressDTO) {
         Address address = addressService.edit(id, addressDTO);
         return ResponseEntity.status(address != null ? 202 : 409).body(address);
     }

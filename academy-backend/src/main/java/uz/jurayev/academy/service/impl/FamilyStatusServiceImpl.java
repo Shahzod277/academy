@@ -51,19 +51,19 @@ public class FamilyStatusServiceImpl implements FamilyStatusService {
     }
 
     @Override
-    public FamilyStatus getOne(Integer id) {
+    public FamilyStatus getOne(Long id) {
         Optional<FamilyStatus> byId = familyStatusRepository.findById(id);
         return byId.orElse(null);
     }
 
     @Override
-    public FamilyStatus edit(Integer id, FamilyStatusDTO familyStatusDTO) {
+    public FamilyStatus edit(Long id, FamilyStatusDTO familyStatusDTO) {
         Optional<FamilyStatus> byId = familyStatusRepository.findById(id);
         Optional<FamilyCondition> optionalFamilyCondition = familyConditionRepository.findById(familyStatusDTO.getFamilyConditionId());
         Optional<Invalid> optionalInvalid = invalidRepository.findById(familyStatusDTO.getInvalidId());
         Optional<LostBreadwinner> optionalLostBreadwinner = breadwinnerRepository.findById(familyStatusDTO.getLostBreadwinnerId());
         if (byId.isPresent()) {
-            FamilyStatus familyStatus = new FamilyStatus();
+            FamilyStatus familyStatus = byId.get();
             familyStatus.setLowIncome(familyStatusDTO.getLowIncome());
             familyStatus.setFamilyConditionId(optionalFamilyCondition.get());
             familyStatus.setInvalidId(optionalInvalid.get());
@@ -74,12 +74,12 @@ public class FamilyStatusServiceImpl implements FamilyStatusService {
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public Result delete(Long id) {
         try {
             familyStatusRepository.deleteById(id);
-            return true;
-        } catch (Exception e) {
-            return false;
+            return new Result("deleted",true);
+        }catch (Exception e){
+            return new Result("Xato!",false);
         }
     }
 }

@@ -10,9 +10,9 @@ public interface LostBreadWinnerSerivce {
 
     List<LostBreadwinner> getAll(int page, int size);
 
-    LostBreadwinner getOne(Integer id);
+    LostBreadwinner getOne(Long id);
 
-    LostBreadwinner edit(Integer id, LostBreadwinner breadwinner);
+    LostBreadwinner edit(Long id, LostBreadwinner breadwinner);
 
-    boolean delete(Integer id);
+    Result delete(Long id);
 }

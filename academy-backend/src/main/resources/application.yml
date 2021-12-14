@@ -9,13 +9,16 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true
 
   servlet:
     multipart:
       enabled: true
-      max-file-size: 5000000000000MB
-      max-request-size: 500000000000MB
-server:
-  port: 8081
+      max-file-size: 500MB
+      max-request-size: 500MB
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html

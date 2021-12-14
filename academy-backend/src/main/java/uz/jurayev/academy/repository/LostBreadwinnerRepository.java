@@ -8,8 +8,8 @@ import java.util.Optional;
 public interface LostBreadwinnerRepository extends JpaRepository<LostBreadwinner, Long> {
     boolean existsByName(String name);
 
-    Optional<LostBreadwinner> findById(Integer id);
+    Optional<LostBreadwinner> findById(Long id);
 
-    void deleteById(Integer id);
+    void deleteById(Long id);
 
 }

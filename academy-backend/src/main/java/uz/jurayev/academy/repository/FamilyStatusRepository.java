@@ -6,8 +6,8 @@ import uz.jurayev.academy.domain.FamilyStatus;
 import java.util.Optional;
 
 public interface FamilyStatusRepository extends JpaRepository<FamilyStatus, Long> {
-    Optional<FamilyStatus> findById(Integer id);
+    Optional<FamilyStatus> findById(Long id);
 
-    void deleteById(Integer id);
+    void deleteById(Long id);
 
 }

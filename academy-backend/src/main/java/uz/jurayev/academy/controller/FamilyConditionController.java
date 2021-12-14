@@ -29,22 +29,20 @@ public class FamilyConditionController {
     }
 
     @GetMapping("{id}")
-    public HttpEntity<?> getOne(@PathVariable Integer id) {
+    public HttpEntity<?> getOne(@PathVariable Long id) {
         FamilyCondition familyCondition = familyConditionService.getOne(id);
         return ResponseEntity.status(familyCondition != null ? 200 : 409).body(familyCondition);
     }
 
     @PutMapping("/{id}")
-    public HttpEntity<?> edit(@PathVariable Integer id, @RequestBody FamilyCondition condition) {
+    public HttpEntity<?> edit(@PathVariable Long id, @RequestBody FamilyCondition condition) {
         FamilyCondition familyCondition = familyConditionService.edit(id, condition);
         return ResponseEntity.status(familyCondition != null ? 201 : 409).body(familyCondition);
     }
-    @DeleteMapping("{id}")
-    public HttpEntity<?> delete(@PathVariable Integer id){
-        boolean delete = familyConditionService.delete(id);
-        if (delete)
-            return ResponseEntity.noContent().build();
-        return ResponseEntity.notFound().build();
 
+    @DeleteMapping("/{id}")
+    public HttpEntity<?> delete(@PathVariable Long id) {
+        Result delete = familyConditionService.delete(id);
+        return ResponseEntity.status(delete.getSuccess() ? 201 : 409).body(delete);
     }
 }

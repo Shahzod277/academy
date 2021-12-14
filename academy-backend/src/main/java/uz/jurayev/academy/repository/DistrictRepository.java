@@ -7,9 +7,9 @@ import java.util.Optional;
 
 public interface DistrictRepository extends JpaRepository<District, Long> {
 
-    Optional<District> findById(Integer id);
+    Optional<District> findById(Long id);
 
-    void deleteById(Integer id);
+    void deleteById(Long id);
 
     boolean existsByDistrictName(String districtName);
 }

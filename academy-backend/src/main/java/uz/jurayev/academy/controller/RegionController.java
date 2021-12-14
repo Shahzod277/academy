@@ -35,13 +35,13 @@ public class RegionController {
     }
 
     @GetMapping("/{id}")
-    public HttpEntity<?> getOne(@PathVariable Integer id) {
+    public HttpEntity<?> getOne(@PathVariable Long id) {
         Region region = regionService.getOne(id);
         return ResponseEntity.status(region != null ? 201 : 409).body(region);
     }
 
     @DeleteMapping("/{id}")
-    public HttpEntity<?> delete(@PathVariable Integer id) {
+    public HttpEntity<?> delete(@PathVariable Long id) {
         boolean delete = regionService.delete(id);
         if (delete)
             return ResponseEntity.noContent().build();
@@ -49,7 +49,7 @@ public class RegionController {
     }
 
     @PutMapping("/{id}")
-    public HttpEntity<?> edit(@PathVariable Integer id,@RequestBody RegionDto regionDto) {
+    public HttpEntity<?> edit(@PathVariable Long id,@RequestBody RegionDto regionDto) {
         Region region = regionService.edit(id, regionDto);
         return ResponseEntity.status(region != null ? 202 : 409).body(region);
     }
