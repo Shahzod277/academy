@@ -9,8 +9,8 @@ public interface InvalidRepository extends JpaRepository<Invalid,Long> {
 
     boolean existsByName(String name);
 
-    Optional<Invalid> findById(Integer id);
+    Optional<Invalid> findById(Long id);
 
-    boolean deleteById(Integer id);
+    void deleteById(Long id);
 
 }

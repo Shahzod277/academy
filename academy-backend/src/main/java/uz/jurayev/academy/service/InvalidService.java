@@ -10,10 +10,10 @@ public interface InvalidService {
 
     List<Invalid> getAll(int page, int size);
 
-    Invalid getOne(Integer id);
+    Invalid getOne(Long id);
 
-    Invalid edit(Integer id, Invalid invalid);
+    Invalid edit(Long id, Invalid invalid);
 
-    boolean delete(Integer id);
+    boolean delete(Long id);
 
 }

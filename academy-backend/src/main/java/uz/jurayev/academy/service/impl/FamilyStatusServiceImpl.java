@@ -51,13 +51,13 @@ public class FamilyStatusServiceImpl implements FamilyStatusService {
     }
 
     @Override
-    public FamilyStatus getOne(Integer id) {
+    public FamilyStatus getOne(Long id) {
         Optional<FamilyStatus> byId = familyStatusRepository.findById(id);
         return byId.orElse(null);
     }
 
     @Override
-    public FamilyStatus edit(Integer id, FamilyStatusDTO familyStatusDTO) {
+    public FamilyStatus edit(Long id, FamilyStatusDTO familyStatusDTO) {
         Optional<FamilyStatus> byId = familyStatusRepository.findById(id);
         Optional<FamilyCondition> optionalFamilyCondition = familyConditionRepository.findById(familyStatusDTO.getFamilyConditionId());
         Optional<Invalid> optionalInvalid = invalidRepository.findById(familyStatusDTO.getInvalidId());
@@ -74,7 +74,7 @@ public class FamilyStatusServiceImpl implements FamilyStatusService {
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(Long id) {
         try {
             familyStatusRepository.deleteById(id);
             return true;

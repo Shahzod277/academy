@@ -41,13 +41,13 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public Country getOne(Integer id) {
+    public Country getOne(Long id) {
         Optional<Country> byId = countryRepository.findById(id);
         return byId.orElse(null);
     }
 
     @Override
-    public Country edit(Integer id, Country country) {
+    public Country edit(Long id, Country country) {
         Optional<Country> byId = countryRepository.findById(id);
         if (byId.isPresent()){
             Country countryEdit = byId.get();
@@ -58,7 +58,7 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(Long id) {
         try {
             countryRepository.deleteById(id);
             return true;

@@ -13,9 +13,9 @@ public interface FamilyStatusService {
 
     List<FamilyStatus> getAll(int page, int size);
 
-    FamilyStatus getOne(Integer id);
+    FamilyStatus getOne(Long id);
 
-    FamilyStatus edit(Integer id, FamilyStatusDTO familyStatusDTO);
+    FamilyStatus edit(Long id, FamilyStatusDTO familyStatusDTO);
 
-    boolean delete(Integer id);
+    boolean delete(Long id);
 }

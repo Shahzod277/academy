@@ -30,19 +30,19 @@ public class FamilyStatusController {
     }
 
     @GetMapping("/{id}")
-    public HttpEntity<?> getOne(@PathVariable Integer id) {
+    public HttpEntity<?> getOne(@PathVariable Long id) {
         FamilyStatus familyStatus = familyStatusService.getOne(id);
         return ResponseEntity.status(familyStatus != null ? 202 : 409).body(familyStatus);
     }
 
     @PutMapping("/{id}")
-    public HttpEntity<?> edit(@PathVariable Integer id, @RequestBody FamilyStatusDTO familyStatusDTO) {
+    public HttpEntity<?> edit(@PathVariable Long id, @RequestBody FamilyStatusDTO familyStatusDTO) {
         FamilyStatus familyStatusEdit = familyStatusService.edit(id, familyStatusDTO);
         return ResponseEntity.status(familyStatusEdit != null ? 202 : 409).body(familyStatusEdit);
     }
 
     @DeleteMapping("/{id}")
-    public HttpEntity<?> delete(@PathVariable Integer id) {
+    public HttpEntity<?> delete(@PathVariable Long id) {
         boolean delete = familyStatusService.delete(id);
         if (delete)
             return ResponseEntity.noContent().build();

@@ -31,19 +31,19 @@ public class InvalidController {
     }
 
     @GetMapping("/{id}")
-    public HttpEntity<?> getOne(@PathVariable Integer id) {
+    public HttpEntity<?> getOne(@PathVariable Long id) {
         Invalid invalid = invalidService.getOne(id);
         return ResponseEntity.status(invalid != null ? 202 : 409).body(invalid);
     }
 
     @PutMapping("/{id}")
-    public HttpEntity<?> edit(@PathVariable Integer id, @RequestBody Invalid invalid) {
+    public HttpEntity<?> edit(@PathVariable Long id, @RequestBody Invalid invalid) {
         Invalid invalidEdit = invalidService.edit(id, invalid);
         return ResponseEntity.status(invalidEdit != null ? 202 : 409).body(invalidEdit);
     }
 
     @DeleteMapping("/{id}")
-    public HttpEntity<?> delete(@PathVariable Integer id) {
+    public HttpEntity<?> delete(@PathVariable Long id) {
         boolean delete = invalidService.delete(id);
         if (delete)
             return ResponseEntity.noContent().build();

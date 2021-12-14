@@ -38,13 +38,13 @@ public class LostBreadWinnerServiceImpl implements LostBreadWinnerSerivce {
     }
 
     @Override
-    public LostBreadwinner getOne(Integer id) {
+    public LostBreadwinner getOne(Long id) {
         Optional<LostBreadwinner> byId = LostBreadwinnerRepository.findById(id);
         return byId.orElse(null);
     }
 
     @Override
-    public LostBreadwinner edit(Integer id, LostBreadwinner lostBreadwinner) {
+    public LostBreadwinner edit(Long id, LostBreadwinner lostBreadwinner) {
         Optional<LostBreadwinner> byId = LostBreadwinnerRepository.findById(id);
         if (byId.isPresent()) {
             LostBreadwinner lostBreadwinnerEdit = new LostBreadwinner();
@@ -55,7 +55,7 @@ public class LostBreadWinnerServiceImpl implements LostBreadWinnerSerivce {
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(Long id) {
         try {
             LostBreadwinnerRepository.deleteById(id);
             return true;

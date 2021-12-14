@@ -37,13 +37,13 @@ public class InvalidServiceImpl implements InvalidService {
     }
 
     @Override
-    public Invalid getOne(Integer id) {
+    public Invalid getOne(Long id) {
         Optional<Invalid> byId = invalidRepository.findById(id);
         return byId.orElse(null);
     }
 
     @Override
-    public Invalid edit(Integer id, Invalid invalid) {
+    public Invalid edit(Long id, Invalid invalid) {
         Optional<Invalid> byId = invalidRepository.findById(id);
         if (byId.isPresent()){
             Invalid invalidEdit = new Invalid();
@@ -54,7 +54,7 @@ public class InvalidServiceImpl implements InvalidService {
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(Long id) {
         try {
             invalidRepository.deleteById(id);
             return true;

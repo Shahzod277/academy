@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 
 public class FamilyStatusDTO {
     private Boolean lowIncome;
-    private Integer familyConditionId;
-    private Integer invalidId;
-    private Integer lostBreadwinnerId;
+    private Long familyConditionId;
+    private Long invalidId;
+    private Long lostBreadwinnerId;
 
 }

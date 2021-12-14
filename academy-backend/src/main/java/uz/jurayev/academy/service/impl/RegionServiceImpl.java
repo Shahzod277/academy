@@ -47,13 +47,13 @@ public class RegionServiceImpl implements RegionService {
     }
 
     @Override
-    public Region getOne(Integer id) {
+    public Region getOne(Long id) {
         Optional<Region> byId = regionRepository.findById(id);
         return byId.orElse(null);
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(Long id) {
         try {
             regionRepository.deleteById(id);
             return true;
@@ -63,7 +63,7 @@ public class RegionServiceImpl implements RegionService {
     }
 
     @Override
-    public Region edit(Integer id, RegionDto regionDto) {
+    public Region edit(Long id, RegionDto regionDto) {
         Optional<Country> countryOptional = countryRepository.findById(regionDto.getCountryId());
         Optional<Region> byId = regionRepository.findById(id);
         if (byId.isPresent()){

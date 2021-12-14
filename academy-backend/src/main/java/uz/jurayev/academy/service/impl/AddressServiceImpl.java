@@ -29,14 +29,11 @@ public class AddressServiceImpl implements AddressService {
     public Result addAddress(AddressDTO addressDTO) {
         try {
             Optional<District> optionalDistrict = districtRepository.findById(addressDTO.getDistrictId());
-            if (optionalDistrict.isPresent()) {
                 Address address = new Address();
                 address.setDetails(addressDTO.getDetails());
                 address.setDistrict(optionalDistrict.get());
                 addressRepository.save(address);
                 return new Result("Saved", true);
-            }
-            return null;
         } catch (Exception e) {
             return new Result("Xato!", false);
         }
@@ -50,13 +47,13 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address getOne(Integer id) {
+    public Address getOne(Long id) {
         Optional<Address> byId = addressRepository.findById(id);
         return byId.orElse(null);
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(Long id) {
         try {
             addressRepository.deleteById(id);
             return true;
@@ -66,7 +63,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address edit(Integer id, AddressDTO addressDTO) {
+    public Address edit(Long id, AddressDTO addressDTO) {
         Optional<District> optionalDistrict = districtRepository.findById(addressDTO.getDistrictId());
         Optional<Address> byId = addressRepository.findById(id);
 

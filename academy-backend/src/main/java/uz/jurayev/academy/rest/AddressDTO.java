@@ -12,7 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class AddressDTO {
 
-    private Integer districtId;
+    private Long districtId;
     private String details;
 
 }

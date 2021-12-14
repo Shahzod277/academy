@@ -8,8 +8,8 @@ import java.util.Optional;
 public interface FamilyConditionRepository extends JpaRepository<FamilyCondition, Long> {
     boolean existsByName(String name);
 
-    Optional<FamilyCondition> findById(Integer id);
+    Optional<FamilyCondition> findById(Long id);
 
-    void deleteById(Integer id);
+    void deleteById(Long id);
 
 }

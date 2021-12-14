@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 
 public class RegionDto {
     private String name;
-    private Integer countryId;
+    private Long countryId;
 }

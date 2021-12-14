@@ -35,7 +35,7 @@ public class DistrictServiceImpl implements DistrictService {
             districtRepository.save(districtAdd);
             return new Result("Saved!", true);
         }
-        return new Result("Bunday Country bor!", false);
+        return new Result("Bunday District bor!", false);
     }
 
     @Override
@@ -46,13 +46,13 @@ public class DistrictServiceImpl implements DistrictService {
     }
 
     @Override
-    public District getOne(Integer id) {
+    public District getOne(Long id) {
         Optional<District> byId = districtRepository.findById(id);
         return byId.orElse(null);
     }
 
     @Override
-    public District edit(Integer id, DistrictDto districtDto) {
+    public District edit(Long id, DistrictDto districtDto) {
         Optional<Region> regionOptional = regionRepository.findById(districtDto.getRegionId());
         Optional<District> byId = districtRepository.findById(id);
         if (byId.isPresent()){
@@ -65,7 +65,7 @@ public class DistrictServiceImpl implements DistrictService {
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(Long id) {
         try {
             districtRepository.deleteById(id);
             return true;

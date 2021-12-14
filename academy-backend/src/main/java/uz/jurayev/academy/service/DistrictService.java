@@ -11,9 +11,9 @@ public interface DistrictService {
 
     List<District> getAll(int page, int size);
 
-    District getOne(Integer id);
+    District getOne(Long id);
 
-    District edit(Integer id, DistrictDto districtDto);
+    District edit(Long id, DistrictDto districtDto);
 
-    boolean delete(Integer id);
+    boolean delete(Long id);
 }

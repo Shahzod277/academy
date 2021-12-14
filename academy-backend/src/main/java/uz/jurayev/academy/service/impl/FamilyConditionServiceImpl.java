@@ -39,13 +39,13 @@ public class FamilyConditionServiceImpl implements FamilyConditionService {
     }
 
     @Override
-    public FamilyCondition getOne(Integer id) {
+    public FamilyCondition getOne(Long id) {
         Optional<FamilyCondition> byId = familyConditionRepository.findById(id);
         return byId.orElse(null);
     }
 
     @Override
-    public FamilyCondition edit(Integer id, FamilyCondition condition) {
+    public FamilyCondition edit(Long id, FamilyCondition condition) {
         Optional<FamilyCondition> byId = familyConditionRepository.findById(id);
         if (byId.isPresent()) {
             FamilyCondition familyCondition = new FamilyCondition();
@@ -56,7 +56,7 @@ public class FamilyConditionServiceImpl implements FamilyConditionService {
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(Long id) {
         try {
             familyConditionRepository.deleteById(id);
             return true;
