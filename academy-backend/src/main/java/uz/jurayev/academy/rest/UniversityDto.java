@@ -7,5 +7,4 @@ public class UniversityDto {
 
     private String name;
 
-    private Long facultyId;
 }

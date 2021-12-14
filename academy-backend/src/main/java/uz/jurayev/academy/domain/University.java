@@ -21,16 +21,6 @@ public class University extends AbstractData{
     @Column(name = "name", length = 50)
     private String name;
 
-    @Column(name = "faculty_id")
-    private Long facultyId;
-
-    public Long getFacultyId() {
-        return facultyId;
-    }
-
-    public void setFacultyId(Long facultyId) {
-        this.facultyId = facultyId;
-    }
 
     public String getName() {
         return name;

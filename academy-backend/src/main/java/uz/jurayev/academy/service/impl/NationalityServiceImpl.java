@@ -1,10 +1,11 @@
-package uz.jurayev.academy.service;
+package uz.jurayev.academy.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import uz.jurayev.academy.domain.Nationality;
 import uz.jurayev.academy.model.Result;
 import uz.jurayev.academy.repository.NationalityRepository;
+import uz.jurayev.academy.service.NationalityService;
 
 import java.util.List;
 import java.util.Optional;

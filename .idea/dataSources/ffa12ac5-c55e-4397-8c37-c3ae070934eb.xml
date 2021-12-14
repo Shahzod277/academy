@@ -1119,11 +1119,13 @@ UC/10
     </table>
     <table id="61" parent="22" name="university">
       <ObjectId>105507</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>9156</StateNumber>
     </table>
     <table id="62" parent="22" name="users">
       <ObjectId>105512</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>9159</StateNumber>
     </table>
