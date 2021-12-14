@@ -3,8 +3,10 @@ package uz.jurayev.academy.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import uz.jurayev.academy.domain.Direction;
+import uz.jurayev.academy.domain.Faculty;
 import uz.jurayev.academy.model.Result;
 import uz.jurayev.academy.repository.DirectionRepository;
+import uz.jurayev.academy.repository.FacultyRepository;
 import uz.jurayev.academy.rest.DirectionDto;
 import uz.jurayev.academy.service.DirectionService;
 
@@ -16,16 +18,18 @@ import java.util.Optional;
 public class DirectionServiceImpl implements DirectionService {
 
     private final DirectionRepository directionRepository;
+    private final FacultyRepository facultyRepository;
 
     @Override
     public Result addDirection(DirectionDto directionDto) {
-        Optional<Direction> directionRepositoryById
-                = directionRepository.findById(directionDto.getFacultyId());
-        if (directionRepositoryById.isEmpty())
-            return new Result("Direction not found " + directionDto.getFacultyId(), false);
+
+        Optional<Faculty> facultyRepositoryById =
+                facultyRepository.findById(directionDto.getFacultyId());
+        if (facultyRepositoryById.isEmpty())
+            return new Result("Faculty not found " + directionDto.getFacultyId(), false);
         Direction direction = new Direction();
         direction.setName(directionDto.getName());
-        direction.setFaculty(directionRepositoryById.get().getFaculty());
+        direction.setFaculty(facultyRepositoryById.get());
         directionRepository.save(direction);
         return new Result("Direction successfully saved", true);
     }

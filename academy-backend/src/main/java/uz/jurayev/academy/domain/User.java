@@ -2,6 +2,8 @@ package uz.jurayev.academy.domain;
 
 import lombok.*;
 import org.hibernate.Hibernate;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.Objects;
@@ -15,7 +17,9 @@ public class User extends AbstractData {
 
     private String username;
     private String password;
+    @Column(unique = true)
     private String email;
+    @Column(unique = true)
     private String phoneNumber;
 
     public User() {}

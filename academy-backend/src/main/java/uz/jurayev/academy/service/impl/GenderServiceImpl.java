@@ -35,6 +35,7 @@ public class GenderServiceImpl implements GenderService {
             return new Result( "not found gender", false);
         Gender update = optionalGender.get();
         update.setName(genderDto.getName());
+        genderRepository.save(update);
         return new Result("update gender",true);
     }
 
