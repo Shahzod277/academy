@@ -25,7 +25,7 @@ public class BenefitServiceImpl implements BenefitService {
     public Result save(Benefit benefit) {
         try {
             boolean existsByName = benefitRepository.existsByName(benefit.getName());
-            if (!existsByName) {
+            if (existsByName) {
                 return new Result("already exists", false);
             }
             Benefit addBenefit = new Benefit();

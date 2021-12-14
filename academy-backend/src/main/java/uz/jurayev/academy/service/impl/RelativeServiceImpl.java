@@ -2,8 +2,7 @@ package uz.jurayev.academy.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import uz.jurayev.academy.domain.Education;
-import uz.jurayev.academy.domain.Relative;
+import uz.jurayev.academy.domain.*;
 import uz.jurayev.academy.model.Result;
 import uz.jurayev.academy.repository.*;
 import uz.jurayev.academy.rest.RelativeDto;
@@ -71,11 +70,25 @@ public class RelativeServiceImpl implements RelativeService {
         if (optionalRelative.isEmpty()) {
             return new Result("relative id not found " + id + "", false);
         }
-        Result result = addRelative(relativeDto);
-        if (result.getSuccess()) {
-            return new Result("successfull edited", true);
+        Relative editRelative = optionalRelative.get();
+        editRelative.setPhoneNumber(relativeDto.getPhoneNumber());
+        editRelative.setName(relativeDto.getName());
+        editRelative.setSurname(relativeDto.getSurname());
+        editRelative.setLastname(relativeDto.getLastname());
+        editRelative.setBenefitId(relativeDto.getBenefitId());
+        editRelative.setInvalidId(relativeDto.getInvalidId());
+        Optional<RelativesType> optionalRelativesType = relativesTypeRepository.findById(relativeDto.getRelativesTypeId());
+        if (optionalRelativesType.isEmpty()) {
+            return new Result("relativesType not found ", false);
         }
-        return new Result("not edited", false);
+        editRelative.setRelativesTypeId(optionalRelativesType.get().getId());
+        Optional<Address> optionalAddress = addressRepository.findById(relativeDto.getAddressId());
+        if (optionalAddress.isEmpty()) {
+            return new Result("address not found ",false);
+        }
+        editRelative.setAddressId(optionalAddress.get().getId());
+        relativeRepository.save(editRelative);
+        return new Result("relative edited",true);
     }
 
 

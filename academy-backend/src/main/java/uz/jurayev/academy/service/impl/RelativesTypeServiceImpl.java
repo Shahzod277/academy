@@ -19,15 +19,13 @@ public class RelativesTypeServiceImpl implements RelativesTypeService {
     public Result addRelativesType(RelativesType relativesType) {
         try {
             RelativesType type = new RelativesType();
-            if (relativesType.getName().isEmpty()) {
                 type.setName(relativesType.getName());
                 relativesTypeRepository.save(type);
                 return new Result("relativestype added", true);
             }
-        } catch (Exception e) {
+         catch (Exception e) {
             return new Result("" + e.getMessage() + "", false);
         }
-        return null;
     }
 
     @Override
