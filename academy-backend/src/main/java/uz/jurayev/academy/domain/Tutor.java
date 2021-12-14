@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -57,6 +58,8 @@ public class Tutor extends AbstractData {
 
     @Column(name = "attachment_id")
     private Long attachmentId;
+
+    private String passwortData;
 
     public Long getAttachmentId() {
         return attachmentId;

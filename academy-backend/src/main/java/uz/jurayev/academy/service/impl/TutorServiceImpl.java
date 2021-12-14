@@ -8,6 +8,7 @@ import uz.jurayev.academy.model.Result;
 import uz.jurayev.academy.repository.TutorRepository;
 import uz.jurayev.academy.rest.TutorDto;
 import uz.jurayev.academy.service.TutorService;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -20,32 +21,31 @@ public class TutorServiceImpl implements TutorService {
     @Override
     public Result create(TutorDto tutorDto) {
 
-        if ( tutorDto == null ) {
+        if (tutorDto == null) {
             return null;
         }
 
         Tutor tutor = new Tutor();
-        tutor.setAttachmentId( tutorDto.getAttachmentId() );
-        tutor.setGroupId( tutorDto.getGroupId() );
-        tutor.setExperience( tutorDto.getExperience() );
-        tutor.setPassportData( tutorDto.getPassportData() );
-        tutor.setNationalityId( tutorDto.getNationalityId() );
-        tutor.setGenderId( tutorDto.getGenderId() );
-        tutor.setEducationId( tutorDto.getEducationId() );
-        tutor.setPhoneNumber( tutorDto.getPhoneNumber() );
-        tutor.setTemporalAddressId( tutorDto.getTemporalAddressId() );
-        tutor.setAddressId( tutorDto.getAddressId() );
-        tutor.setBirthDate( tutorDto.getBirthDate() );
-        tutor.setLastname( tutorDto.getLastname() );
-        tutor.setName( tutorDto.getName() );
-        tutor.setSurname( tutorDto.getSurname() );
+        tutor.setAttachmentId(tutorDto.getAttachmentId());
+        tutor.setExperience(tutorDto.getExperience());
+        tutor.setPassportData(tutorDto.getPassportData());
+        tutor.setNationalityId(tutorDto.getNationalityId());
+        tutor.setGenderId(tutorDto.getGenderId());
+        tutor.setEducationId(tutorDto.getEducationId());
+        tutor.setPhoneNumber(tutorDto.getPhoneNumber());
+        tutor.setTemporalAddressId(tutorDto.getTemporalAddressId());
+        tutor.setAddressId(tutorDto.getAddressId());
+        tutor.setBirthDate(tutorDto.getBirthDate());
+        tutor.setLastname(tutorDto.getLastname());
+        tutor.setName(tutorDto.getName());
+        tutor.setSurname(tutorDto.getSurname());
         tutorRepository.save(tutor);
-        return new Result( "Tutor successfully created", true);
+        return new Result("Tutor successfully created", true);
     }
 
     @Override
     public Result delete(Long id) {
-       if (tutorRepository.existsById(id)){
+        if (tutorRepository.existsById(id)) {
             tutorRepository.deleteById(id);
             return new Result("Tutor with id " + id + " successfully deleted", true);
         }
@@ -68,10 +68,23 @@ public class TutorServiceImpl implements TutorService {
     public Result update(Long id, TutorDto tutorDto) {
         Optional<Tutor> tutorById = tutorRepository.findById(id);
         if (tutorById.isPresent()) {
-            TutorMapper.INSTANCE.toTutor(tutorDto);
-            tutorRepository.save(tutorById.get());
+            Tutor tutor = tutorById.get();
+            tutor.setAttachmentId(tutorDto.getAttachmentId());
+            tutor.setExperience(tutorDto.getExperience());
+            tutor.setPassportData(tutorDto.getPassportData());
+            tutor.setNationalityId(tutorDto.getNationalityId());
+            tutor.setGenderId(tutorDto.getGenderId());
+            tutor.setEducationId(tutorDto.getEducationId());
+            tutor.setPhoneNumber(tutorDto.getPhoneNumber());
+            tutor.setTemporalAddressId(tutorDto.getTemporalAddressId());
+            tutor.setAddressId(tutorDto.getAddressId());
+            tutor.setBirthDate(tutorDto.getBirthDate());
+            tutor.setLastname(tutorDto.getLastname());
+            tutor.setName(tutorDto.getName());
+            tutor.setSurname(tutorDto.getSurname());
+            tutorRepository.save(tutor);
             return new Result("Tutor with id " + id + " successfully updated", true);
         }
-        return new Result( "Tutor with id " + id + " not found", false);
+        return new Result("Tutor with id " + id + " not found", false);
     }
 }

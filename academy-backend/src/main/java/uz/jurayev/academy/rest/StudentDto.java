@@ -44,9 +44,6 @@ public class StudentDto {
     @Column(name = "telegram_phone_number", length = 20)
     private String telegramPhoneNumber;
 
-    @Column(name = "passport_data", length = 20)
-    private String passportData;
-
     @Column(name = "relatives_id")
     private Long relativesId;
 
@@ -55,4 +52,9 @@ public class StudentDto {
 
     @Column(name = "rating_status_id")
     private Long ratingStatusId;
+
+    private String passportData;
+
+    private Long groupId;
 }
+

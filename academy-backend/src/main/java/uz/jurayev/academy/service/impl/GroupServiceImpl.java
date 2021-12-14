@@ -40,7 +40,7 @@ public class GroupServiceImpl implements GroupService {
         groups.setTutor(tutor.get());
         groups.setDirection(direction.get());
         groupRepository.save(groups);
-        return null;
+        return new Result("group added", true);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class GroupServiceImpl implements GroupService {
         }
         Optional<Direction> directionById = directionRepository.findById(groupsDto.getDirectionId());
         if (directionById.isEmpty()) {
-            return new Result("Direction id " + groupsDto.getDirectionId() +" not found", false);
+            return new Result("Direction id " + groupsDto.getDirectionId() + " not found", false);
         }
         Groups groups = groupsById.get();
         groups.setName(groupsDto.getName());
@@ -84,8 +84,8 @@ public class GroupServiceImpl implements GroupService {
         try {
             groupRepository.deleteById(id);
             return new Result("Groups successfully deleted", true);
-        }catch (Exception e){
-            return new Result("Error "  + e.getMessage(), false);
+        } catch (Exception e) {
+            return new Result("Error " + e.getMessage(), false);
         }
     }
 

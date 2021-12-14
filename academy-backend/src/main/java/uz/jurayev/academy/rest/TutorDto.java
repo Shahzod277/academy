@@ -44,8 +44,6 @@ public class TutorDto {
     @Column(name = "experience")
     private Integer experience;
 
-    @Column(name = "group_id")
-    private Long groupId;
 
     @Column(name = "attachment_id")
     private Long attachmentId;
