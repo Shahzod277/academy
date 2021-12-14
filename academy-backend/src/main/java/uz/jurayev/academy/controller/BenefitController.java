@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/benefit")
 public class BenefitController {
 
     private final BenefitServiceImpl benefitService;
