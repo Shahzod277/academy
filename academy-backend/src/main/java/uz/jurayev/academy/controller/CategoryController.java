@@ -23,7 +23,7 @@ public class CategoryController {
     public ResponseEntity<?> save(@RequestBody CategoryDto categoryDto){
         Result save = categoryService.save(categoryDto);
         if (save.getSuccess())
-            return ResponseEntity.status(202).body(save);
+            return ResponseEntity.status(201).body(save);
         return ResponseEntity.status(409).body(save);
     }
 

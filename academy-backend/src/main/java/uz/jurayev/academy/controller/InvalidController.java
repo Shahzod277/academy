@@ -33,7 +33,7 @@ public class InvalidController {
     @GetMapping("/{id}")
     public HttpEntity<?> getOne(@PathVariable Long id) {
         Invalid invalid = invalidService.getOne(id);
-        return ResponseEntity.status(invalid != null ? 202 : 409).body(invalid);
+        return ResponseEntity.status(invalid != null ? 200 : 409).body(invalid);
     }
 
     @PutMapping("/{id}")
@@ -45,6 +45,6 @@ public class InvalidController {
     @DeleteMapping("/{id}")
     public HttpEntity<?> delete(@PathVariable Long id) {
         Result delete = invalidService.delete(id);
-        return ResponseEntity.status(delete.getSuccess() ? 201 : 409).body(delete);
+        return ResponseEntity.status(delete.getSuccess() ? 200 : 409).body(delete);
     }
 }

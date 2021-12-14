@@ -33,13 +33,13 @@ public class TutorController {
     @GetMapping("/{id}")
     public HttpEntity<?> getOne(@PathVariable Long id) {
         TutorDto tutor = tutorService.findById(id);
-        return ResponseEntity.status(tutor != null ? 201 : 409).body(tutor);
+        return ResponseEntity.status(tutor != null ? 200 : 409).body(tutor);
     }
 
     @DeleteMapping("/{id}")
     public HttpEntity<?> delete(@PathVariable Long id) {
         Result delete = tutorService.delete(id);
-        return ResponseEntity.status(delete.getSuccess() ? 201 : 409).body(delete);
+        return ResponseEntity.status(delete.getSuccess() ? 200 : 409).body(delete);
     }
 
     @PutMapping("/{id}")

@@ -38,7 +38,7 @@ public class UniverstiyController {
         return ResponseEntity.status(409).body(null);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         Result delete = universityService.delete(id);
         if (delete.getSuccess()) {

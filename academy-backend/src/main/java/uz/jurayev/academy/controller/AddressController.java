@@ -35,7 +35,7 @@ public class AddressController {
     @GetMapping("/{id}")
     public HttpEntity<?> getOne(@PathVariable Long id) {
         Address address = addressService.getOne(id);
-        return ResponseEntity.status(address != null ? 201 : 409).body(address);
+        return ResponseEntity.status(address != null ? 200 : 409).body(address);
     }
 
     @DeleteMapping("/{id}")

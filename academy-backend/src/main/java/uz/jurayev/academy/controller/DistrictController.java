@@ -36,7 +36,7 @@ public class DistrictController {
     @GetMapping("/{id}")
     public HttpEntity<?> getOne(@PathVariable Long id) {
         District district = districtService.getOne(id);
-        return ResponseEntity.status(district != null ? 201 : 409).body(district);
+        return ResponseEntity.status(district != null ? 200 : 409).body(district);
     }
 
     @PutMapping("/{id}")

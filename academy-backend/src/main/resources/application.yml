@@ -1,9 +1,8 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/academy
-    username: postgres
-    password: 963
-    driver-class-name: org.postgresql.Driver
+    username: best_user
+    password: best_user
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
 
@@ -15,8 +14,8 @@ spring:
   servlet:
     multipart:
       enabled: true
-      max-file-size: 500MB
-      max-request-size: 500MB
+      max-file-size: 50MB
+      max-request-size: 50MB
 springdoc:
   api-docs:
     path: /api-docs

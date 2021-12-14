@@ -50,9 +50,8 @@ public class StudentServiceImpl implements StudentService {
         Optional<Groups> optionalGroups = groupRepository.findById(studentDto.getGroupId());
         if (optionalGroups.isPresent()) {
             student.setGroups(optionalGroups.get());
-            studentRepository.save(student);
         }
-
+        studentRepository.save(student);
         return new Result("Student successfully saved", true);
     }
 
@@ -99,13 +98,9 @@ public class StudentServiceImpl implements StudentService {
             student.setSurname(studentDto.getSurname());
             student.setName(studentDto.getName());
             Optional<Groups> optionalGroups = groupRepository.findById(studentDto.getGroupId());
-            if (optionalGroups.isPresent()) {
-                student.setGroups(optionalGroups.get());
-
-                studentRepository.save(student);
-                return new Result("Student successfully updated", true);
-            }
-            return null;
+            optionalGroups.ifPresent(student::setGroups);
+            studentRepository.save(student);
+            return new Result("Student successfully updated", true);
         }
         return new Result("id not found ", false);
     }

@@ -13,6 +13,7 @@ import uz.jurayev.academy.service.impl.RelativeServiceImpl;
 @RequiredArgsConstructor
 @RequestMapping("/relative")
 public class RelativeController {
+
     private final RelativeServiceImpl relativeService;
 
     @GetMapping

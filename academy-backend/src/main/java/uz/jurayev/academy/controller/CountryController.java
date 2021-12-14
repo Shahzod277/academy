@@ -32,7 +32,7 @@ public class CountryController {
     @GetMapping("/{id}")
     public HttpEntity<?> getOne(@PathVariable Long id) {
         Country country = countryService.getOne(id);
-        return ResponseEntity.status(country != null ? 201 : 409).body(country);
+        return ResponseEntity.status(country != null ? 200 : 409).body(country);
     }
 
     @PutMapping("/{id}")

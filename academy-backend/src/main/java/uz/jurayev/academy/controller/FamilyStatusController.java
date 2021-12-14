@@ -32,7 +32,7 @@ public class FamilyStatusController {
     @GetMapping("/{id}")
     public HttpEntity<?> getOne(@PathVariable Long id) {
         FamilyStatus familyStatus = familyStatusService.getOne(id);
-        return ResponseEntity.status(familyStatus != null ? 202 : 409).body(familyStatus);
+        return ResponseEntity.status(familyStatus != null ? 200 : 409).body(familyStatus);
     }
 
     @PutMapping("/{id}")
@@ -44,6 +44,6 @@ public class FamilyStatusController {
     @DeleteMapping("/{id}")
     public HttpEntity<?> delete(@PathVariable Long id) {
         Result delete = familyStatusService.delete(id);
-        return ResponseEntity.status(delete.getSuccess() ? 201 : 409).body(delete);
+        return ResponseEntity.status(delete.getSuccess() ? 200 : 409).body(delete);
     }
 }

@@ -32,7 +32,7 @@ public class LostBreadWinnerController {
     @GetMapping("/{id}")
     public HttpEntity<?> getOne(@PathVariable Long id) {
         LostBreadwinner breadwinner = lostBreadWinnerSerivce.getOne(id);
-        return ResponseEntity.status(breadwinner != null ? 202 : 409).body(breadwinner);
+        return ResponseEntity.status(breadwinner != null ? 200 : 409).body(breadwinner);
     }
 
     @PutMapping("/{id}")
@@ -44,6 +44,6 @@ public class LostBreadWinnerController {
     @DeleteMapping("/{id}")
     public HttpEntity<?> delete(@PathVariable Long id){
         Result delete = lostBreadWinnerSerivce.delete(id);
-        return ResponseEntity.status(delete.getSuccess() ? 201 : 409).body(delete);
+        return ResponseEntity.status(delete.getSuccess() ? 200 : 409).body(delete);
     }
 }

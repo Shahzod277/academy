@@ -14,6 +14,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class RelativeServiceImpl implements RelativeService {
+
     public final RelativeRepository relativeRepository;
     public final RelativesTypeRepository relativesTypeRepository;
     public final InvalidRepository invalidRepository;
@@ -22,8 +23,9 @@ public class RelativeServiceImpl implements RelativeService {
 
     @Override
     public Result addRelative(RelativeDto relativeDto) {
+
         Relative relative = new Relative();
-        if (!addressRepository.findById(relativeDto.getAddressId()).isPresent()) {
+        if (addressRepository.findById (relativeDto.getAddressId()).isEmpty()) {
             return new Result("address id not found " + relativeDto.getAddressId() + "", false);
         }
         relative.setAddressId(relativeDto.getAddressId());
@@ -31,7 +33,7 @@ public class RelativeServiceImpl implements RelativeService {
             return new Result("invalid id not found " + relativeDto.getInvalidId() + "", false);
         }
         relative.setInvalidId(relativeDto.getInvalidId());
-        if (!benefitRepository.findById(relativeDto.getBenefitId()).isPresent()) {
+        if (benefitRepository.findById(relativeDto.getBenefitId()).isEmpty()) {
             return new Result("benefit id not found " + relativeDto.getBenefitId() + "", false);
         }
         relative.setBenefitId(relativeDto.getBenefitId());

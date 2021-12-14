@@ -37,12 +37,12 @@ public class FamilyConditionController {
     @PutMapping("/{id}")
     public HttpEntity<?> edit(@PathVariable Long id, @RequestBody FamilyCondition condition) {
         FamilyCondition familyCondition = familyConditionService.edit(id, condition);
-        return ResponseEntity.status(familyCondition != null ? 201 : 409).body(familyCondition);
+        return ResponseEntity.status(familyCondition != null ? 202 : 409).body(familyCondition);
     }
 
     @DeleteMapping("/{id}")
     public HttpEntity<?> delete(@PathVariable Long id) {
         Result delete = familyConditionService.delete(id);
-        return ResponseEntity.status(delete.getSuccess() ? 201 : 409).body(delete);
+        return ResponseEntity.status(delete.getSuccess() ? 200 : 409).body(delete);
     }
 }
