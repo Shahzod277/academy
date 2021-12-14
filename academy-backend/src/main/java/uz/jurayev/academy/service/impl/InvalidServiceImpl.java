@@ -46,7 +46,7 @@ public class InvalidServiceImpl implements InvalidService {
     public Invalid edit(Long id, Invalid invalid) {
         Optional<Invalid> byId = invalidRepository.findById(id);
         if (byId.isPresent()){
-            Invalid invalidEdit = new Invalid();
+            Invalid invalidEdit = byId.get();
             invalidEdit.setName(invalid.getName());
             return invalidRepository.save(invalidEdit);
         }
@@ -54,12 +54,12 @@ public class InvalidServiceImpl implements InvalidService {
     }
 
     @Override
-    public boolean delete(Long id) {
+    public Result delete(Long id) {
         try {
             invalidRepository.deleteById(id);
-            return true;
+            return new Result("deleted",true);
         }catch (Exception e){
-            return false;
+            return new Result("Xato!",false);
         }
     }
 }

@@ -15,6 +15,6 @@ public interface FamilyConditionService {
 
     FamilyCondition edit(Long id, FamilyCondition condition);
 
-    boolean delete(Long id);
+    Result delete(Long id);
 
 }

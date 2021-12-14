@@ -14,5 +14,5 @@ public interface LostBreadWinnerSerivce {
 
     LostBreadwinner edit(Long id, LostBreadwinner breadwinner);
 
-    boolean delete(Long id);
+    Result delete(Long id);
 }

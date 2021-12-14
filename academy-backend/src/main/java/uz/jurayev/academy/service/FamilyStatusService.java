@@ -17,5 +17,5 @@ public interface FamilyStatusService {
 
     FamilyStatus edit(Long id, FamilyStatusDTO familyStatusDTO);
 
-    boolean delete(Long id);
+    Result delete(Long id);
 }

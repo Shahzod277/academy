@@ -42,11 +42,8 @@ public class LostBreadWinnerController {
     }
 
     @DeleteMapping("/{id}")
-    public HttpEntity<?> delete(@PathVariable Long id) {
-        boolean delete = lostBreadWinnerSerivce.delete(id);
-        if (delete)
-            return ResponseEntity.noContent().build();
-        return ResponseEntity.notFound().build();
-
+    public HttpEntity<?> delete(@PathVariable Long id){
+        Result delete = lostBreadWinnerSerivce.delete(id);
+        return ResponseEntity.status(delete.getSuccess() ? 201 : 409).body(delete);
     }
 }

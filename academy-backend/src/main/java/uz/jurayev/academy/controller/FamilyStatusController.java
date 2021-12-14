@@ -43,10 +43,7 @@ public class FamilyStatusController {
 
     @DeleteMapping("/{id}")
     public HttpEntity<?> delete(@PathVariable Long id) {
-        boolean delete = familyStatusService.delete(id);
-        if (delete)
-            return ResponseEntity.noContent().build();
-        return ResponseEntity.notFound().build();
-
+        Result delete = familyStatusService.delete(id);
+        return ResponseEntity.status(delete.getSuccess() ? 201 : 409).body(delete);
     }
 }

@@ -63,7 +63,7 @@ public class FamilyStatusServiceImpl implements FamilyStatusService {
         Optional<Invalid> optionalInvalid = invalidRepository.findById(familyStatusDTO.getInvalidId());
         Optional<LostBreadwinner> optionalLostBreadwinner = breadwinnerRepository.findById(familyStatusDTO.getLostBreadwinnerId());
         if (byId.isPresent()) {
-            FamilyStatus familyStatus = new FamilyStatus();
+            FamilyStatus familyStatus = byId.get();
             familyStatus.setLowIncome(familyStatusDTO.getLowIncome());
             familyStatus.setFamilyConditionId(optionalFamilyCondition.get());
             familyStatus.setInvalidId(optionalInvalid.get());
@@ -74,12 +74,12 @@ public class FamilyStatusServiceImpl implements FamilyStatusService {
     }
 
     @Override
-    public boolean delete(Long id) {
+    public Result delete(Long id) {
         try {
             familyStatusRepository.deleteById(id);
-            return true;
-        } catch (Exception e) {
-            return false;
+            return new Result("deleted",true);
+        }catch (Exception e){
+            return new Result("Xato!",false);
         }
     }
 }

@@ -44,10 +44,7 @@ public class InvalidController {
 
     @DeleteMapping("/{id}")
     public HttpEntity<?> delete(@PathVariable Long id) {
-        boolean delete = invalidService.delete(id);
-        if (delete)
-            return ResponseEntity.noContent().build();
-        return ResponseEntity.notFound().build();
-
+        Result delete = invalidService.delete(id);
+        return ResponseEntity.status(delete.getSuccess() ? 201 : 409).body(delete);
     }
 }

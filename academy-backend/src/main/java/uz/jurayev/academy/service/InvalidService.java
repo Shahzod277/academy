@@ -14,6 +14,6 @@ public interface InvalidService {
 
     Invalid edit(Long id, Invalid invalid);
 
-    boolean delete(Long id);
+    Result delete(Long id);
 
 }
