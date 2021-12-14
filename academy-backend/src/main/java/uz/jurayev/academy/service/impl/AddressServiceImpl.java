@@ -29,11 +29,14 @@ public class AddressServiceImpl implements AddressService {
     public Result addAddress(AddressDTO addressDTO) {
         try {
             Optional<District> optionalDistrict = districtRepository.findById(addressDTO.getDistrictId());
+            if (optionalDistrict.isPresent()) {
                 Address address = new Address();
                 address.setDetails(addressDTO.getDetails());
                 address.setDistrict(optionalDistrict.get());
                 addressRepository.save(address);
                 return new Result("Saved", true);
+            }
+            return null;
         } catch (Exception e) {
             return new Result("Xato!", false);
         }
