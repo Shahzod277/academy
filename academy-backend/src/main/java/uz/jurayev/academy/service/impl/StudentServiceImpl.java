@@ -1,7 +1,11 @@
 package uz.jurayev.academy.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import uz.jurayev.academy.domain.Address;
 import uz.jurayev.academy.domain.Student;
 import uz.jurayev.academy.mapper.StudentMapper;
 import uz.jurayev.academy.model.Result;
@@ -57,15 +61,16 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<StudentDto> findAll() {
-        List<Student> students = studentRepository.findAll();
-        return studentMapper.toStudentDtos(students);
+    public List<Student> findAll(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Student> students = studentRepository.findAll(pageable);
+        return students.getContent();
     }
 
     @Override
-    public StudentDto findById(Long id) {
-        Optional<Student> studentById = studentRepository.findById(id);
-        return studentById.map(studentMapper::toStudentDto).orElse(null);
+    public Student findById(Long id) {
+        Optional<Student> byId = studentRepository.findById(id);
+        return byId.orElse(null);
     }
 
     @Override

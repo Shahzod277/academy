@@ -7,6 +7,7 @@ import lombok.ToString;
 import org.hibernate.Hibernate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -60,6 +61,17 @@ public class Student extends AbstractData {
     private Long creativePotentialId;
 
     private Long attachmentId;
+
+    @ManyToOne
+    private Groups groups;
+
+    public Groups getGroups() {
+        return groups;
+    }
+
+    public void setGroups(Groups groups) {
+        this.groups = groups;
+    }
 
     public Long getAttachmentId() {
         return attachmentId;

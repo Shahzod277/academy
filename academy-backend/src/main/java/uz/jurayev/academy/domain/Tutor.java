@@ -55,9 +55,6 @@ public class Tutor extends AbstractData {
     @Column(name = "experience")
     private Integer experience;
 
-    @Column(name = "group_id")
-    private Long groupId;
-
     @Column(name = "attachment_id")
     private Long attachmentId;
 
@@ -67,14 +64,6 @@ public class Tutor extends AbstractData {
 
     public void setAttachmentId(Long attachmentId) {
         this.attachmentId = attachmentId;
-    }
-
-    public Long getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(Long groupId) {
-        this.groupId = groupId;
     }
 
     public Integer getExperience() {
