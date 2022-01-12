@@ -2,7 +2,7 @@ package uz.jurayev.academy.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import uz.jurayev.academy.rest.Data;
+import uz.jurayev.academy.rest.StudentInfoDto;
 import uz.jurayev.academy.domain.Student;
 import uz.jurayev.academy.model.Result;
 import uz.jurayev.academy.repository.*;
@@ -18,31 +18,39 @@ public class StudentServiceImpl implements StudentService {
     private final GroupRepository groupRepository;
 
     @Override
-    public Result save(Data data) {
-        Student student = new Student();
-        student.setStudentId(data.getId());
-        student.setAccomodationCode(data.getAccomodationCode());
-        student.setAccomodationName(data.getAccomodationName());
-        student.setAddress(data.getAddress());
-        student.setAddressCurrent(data.getAddressCurrent());
-        student.setBirthday(data.getBirthday());
-        student.setCitizenshipCode(data.getCitizenshipCode());
-        student.setCitizenshipName(data.getCitizenshipName());
-        student.setCountryCode(data.getCountryCode());
-        student.setCountryName(data.getCountryName());
-        student.setCourse(data.getCourse());
-        student.setDistrict(data.getDistrict());
-        student.setEducationFormCode(data.getEducationFormCode());
-        student.setEducationFormName(data.getEducationFormName());
-        student.setEducationTypeCode(data.getEducationTypeCode());
-        student.setEducationTypeName(data.getEducationTypeName());
-        student.setFacultyCode(data.getFacultyCode());
-        student.setFacultyName(data.getFacultyName());
-        student.setGenderCode(data.getGenderCode());
-        student.setGenderName(data.getGenderName());
-        student.setNationalityCode(data.getNationalityCode());
-        student.setNationalityName(data.getNationalityName());
-
+   public Result save(StudentInfoDto studentInfo) {
+      Student student = new Student();
+      student.setStudentId(studentInfo.getId());
+      student.setAccomodation_name(studentInfo.getAccomodation_code());
+      student.setAddress(studentInfo.getAddress());
+      student.setBirthday(studentInfo.getBirthday());
+      student.setAddress_current(studentInfo.getAddress_current());
+      student.setEducation_form_name(studentInfo.getEducation_form_name());
+      student.setEducation_type_name(studentInfo.getEducation_type_name());
+      student.setEducation_year(studentInfo.getEducation_year());
+      student.setCountry_name(studentInfo.getCountry_name());
+      student.setCitizenship_name(studentInfo.getCitizenship_name());
+      student.setCourse(studentInfo.getCourse());
+      student.setDistrict(studentInfo.getDistrict());
+      student.setFaculty_name(studentInfo.getFaculty_name());
+      student.setFathername(studentInfo.getFathername());
+      student.setLastname(studentInfo.getLastname());
+      student.setFirstname(studentInfo.getFirstname());
+      student.setGender_name(studentInfo.getGender_name());
+      student.setNationality_name(studentInfo.getNationality_name());
+      student.setPayment_type_name(studentInfo.getPayment_type_name());
+      student.setPinfl(studentInfo.getPinfl());
+      student.setSerial_number(studentInfo.getSerial_number());
+      student.setSpeciality_code(studentInfo.getSpeciality_code());
+      student.setSpeciality_name(studentInfo.getSpeciality_name());
+      student.setUniversity_code(studentInfo.getUniversity_code());
+      student.setUniversity_name(studentInfo.getUniversity_name());
+      student.setUniversity_type_name(studentInfo.getUniversity_type_name());
+      student.setRegion(studentInfo.getRegion());
+      student.setFaculty_code(studentInfo.getFaculty_code());
+      student.setSocial_category_name(studentInfo.getSocial_category_name());
+      student.setUniversity_ownership_name(studentInfo.getUniversity_ownership_name());
+      student.setGroup(null);
         studentRepository.save(student);
         return new Result("Student successfully saved", true);
     }

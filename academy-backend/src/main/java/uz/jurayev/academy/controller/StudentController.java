@@ -1,16 +1,18 @@
 package uz.jurayev.academy.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import uz.jurayev.academy.rest.Data;
 import uz.jurayev.academy.domain.Student;
 import uz.jurayev.academy.model.Result;
+import uz.jurayev.academy.hemis_api.Data;
+import uz.jurayev.academy.rest.PinflDto;
 import uz.jurayev.academy.security.SecurityConstant;
 import uz.jurayev.academy.service.impl.StudentServiceImpl;
+
 import java.net.URI;
-import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.util.List;
 
@@ -28,20 +30,20 @@ public class StudentController {
     }
 
     @PostMapping
-    public HttpEntity<?> add(@RequestBody String pinfl) {
-
-
+    public HttpEntity<?> add(@RequestBody PinflDto pinflDto) {
+        String pinfl = pinflDto.getPinfl();
         URI baseUrl = URI.create("http://ministry.hemis.uz/app/rest/v2/services/student/get?pinfl=" + pinfl);
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setBearerAuth(SecurityConstant.TOKEN);
         HttpEntity<Object> httpEntity = new HttpEntity<>(httpHeaders);
-        ResponseEntity<Data> data = restTemplate.exchange(baseUrl, HttpMethod.POST, httpEntity, Data.class);
-        Data body = data.getBody();
-        assert body != null;
-        Result result = studentService.save(body);
+        ResponseEntity<Data> data = restTemplate.exchange(baseUrl, HttpMethod.GET, httpEntity, Data.class);
+        Data content = data.getBody();
+        assert content != null;
+        Result result = studentService.save(content.getData());
         return ResponseEntity.status(result.getSuccess() ? 201 : 401).body(result);
+
     }
 
     @GetMapping("/all")
