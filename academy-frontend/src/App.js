@@ -1,6 +1,6 @@
 import Sidebar from "./components/sidebar/sidebar";
 import './app.css';
-import StudentData from './components/student/StudentData';
+import Student from "./components/student/Student";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
           <div className = "container">
               <Sidebar />
               <div className = "otherPages">
-                  <StudentData />
+                  <Student />
               </div>
           </div>
       </header>

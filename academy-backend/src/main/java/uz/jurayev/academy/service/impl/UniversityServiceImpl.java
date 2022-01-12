@@ -2,11 +2,8 @@ package uz.jurayev.academy.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import uz.jurayev.academy.domain.Faculty;
-import uz.jurayev.academy.domain.Region;
 import uz.jurayev.academy.domain.University;
 import uz.jurayev.academy.model.Result;
-import uz.jurayev.academy.repository.FacultyRepository;
 import uz.jurayev.academy.repository.UniversityRepository;
 import uz.jurayev.academy.rest.UniversityDto;
 import uz.jurayev.academy.service.UniversityService;

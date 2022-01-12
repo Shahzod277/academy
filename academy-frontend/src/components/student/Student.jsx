@@ -1,21 +1,34 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import StudentData from './StudentData';
+import OnLoadingStudentData from "./OnLoadingStudentData";
 
 function Student() {
 
-    const [students, setStudents] = useState();
+    const DataLoading = OnLoadingStudentData(StudentData);
+    const [appState, setAppState] = useState(
+        {
+            // loading: false,
+            students: null,
+        }
+    );
 
     useEffect(() => {
-        const apiUrl = 'http://localhost:8080/api/student';
+        // setAppState({loading: true})
+        const apiUrl = 'http://localhost:8080/api/student/all';
         axios.get(apiUrl).then((resp) => {
             const allStudents = resp.data;
-            setStudents(allStudents);
+            setAppState({
+                // loading: false,
+                students: allStudents
+            });
         });
-    }, [setStudents]);
+    }, [setAppState]);
 
     return(
         <div className='student'>
-
+            {/*<DataLoading isLoading={appState.loading} students={appState.students} />*/}
+            <DataLoading students={appState.students} />
         </div>
     );
 }

@@ -1,21 +1,14 @@
 package uz.jurayev.academy.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import uz.jurayev.academy.domain.Address;
-import uz.jurayev.academy.domain.Groups;
+import uz.jurayev.academy.rest.Data;
 import uz.jurayev.academy.domain.Student;
-import uz.jurayev.academy.mapper.StudentMapper;
 import uz.jurayev.academy.model.Result;
 import uz.jurayev.academy.repository.*;
-import uz.jurayev.academy.rest.StudentDto;
 import uz.jurayev.academy.service.StudentService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,83 +18,47 @@ public class StudentServiceImpl implements StudentService {
     private final GroupRepository groupRepository;
 
     @Override
-    public Result save(StudentDto studentDto) {
-
-        if (studentDto == null) {
-            return null;
-        }
-
+    public Result save(Data data) {
         Student student = new Student();
-        student.setCreativePotentialId(studentDto.getCreativePotentialId());
-        student.setPassportData(studentDto.getPassportData());
-        student.setRelativesId(studentDto.getRelativesId());
-        student.setTelegramPhoneNumber(studentDto.getTelegramPhoneNumber());
-        student.setNationalityId(studentDto.getNationalityId());
-        student.setGenderId(studentDto.getGenderId());
-        student.setEducationId(studentDto.getEducationId());
-        student.setPhoneNumber(studentDto.getPhoneNumber());
-        student.setFamilyStatusId(studentDto.getFamilyStatusId());
-        student.setTemporalAddressId(studentDto.getTemporalAddressId());
-        student.setAddressId(studentDto.getAddressId());
-        student.setBirthDate(studentDto.getBirthDate());
-        student.setLastname(studentDto.getLastname());
-        student.setSurname(studentDto.getSurname());
-        student.setName(studentDto.getName());
-        Optional<Groups> optionalGroups = groupRepository.findById(studentDto.getGroupId());
-        if (optionalGroups.isPresent()) {
-            student.setGroups(optionalGroups.get());
-        }
+        student.setStudentId(data.getId());
+        student.setAccomodationCode(data.getAccomodationCode());
+        student.setAccomodationName(data.getAccomodationName());
+        student.setAddress(data.getAddress());
+        student.setAddressCurrent(data.getAddressCurrent());
+        student.setBirthday(data.getBirthday());
+        student.setCitizenshipCode(data.getCitizenshipCode());
+        student.setCitizenshipName(data.getCitizenshipName());
+        student.setCountryCode(data.getCountryCode());
+        student.setCountryName(data.getCountryName());
+        student.setCourse(data.getCourse());
+        student.setDistrict(data.getDistrict());
+        student.setEducationFormCode(data.getEducationFormCode());
+        student.setEducationFormName(data.getEducationFormName());
+        student.setEducationTypeCode(data.getEducationTypeCode());
+        student.setEducationTypeName(data.getEducationTypeName());
+        student.setFacultyCode(data.getFacultyCode());
+        student.setFacultyName(data.getFacultyName());
+        student.setGenderCode(data.getGenderCode());
+        student.setGenderName(data.getGenderName());
+        student.setNationalityCode(data.getNationalityCode());
+        student.setNationalityName(data.getNationalityName());
+
         studentRepository.save(student);
         return new Result("Student successfully saved", true);
     }
 
     @Override
     public Result delete(Long id) {
-        if (studentRepository.existsById(id)) {
-            studentRepository.deleteById(id);
-            return new Result("Student successfully deleted", true);
-        } else {
-            return new Result("Student with id " + id + " not found", false);
-        }
+        return null;
     }
 
     @Override
     public List<Student> findAll(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        Page<Student> students = studentRepository.findAll(pageable);
-        return students.getContent();
+        return null;
     }
 
     @Override
-    public Student findById(Long id) {
-        Optional<Student> byId = studentRepository.findById(id);
-        return byId.orElse(null);
-    }
-
-    @Override
-    public Result update(Long id, StudentDto studentDto) {
-        Optional<Student> studentById = studentRepository.findById(id);
-        if (studentById.isPresent()) {
-            Student student = studentById.get();
-            student.setCreativePotentialId(studentDto.getCreativePotentialId());
-            student.setRelativesId(studentDto.getRelativesId());
-            student.setTelegramPhoneNumber(studentDto.getTelegramPhoneNumber());
-            student.setNationalityId(studentDto.getNationalityId());
-            student.setGenderId(studentDto.getGenderId());
-            student.setEducationId(studentDto.getEducationId());
-            student.setPhoneNumber(studentDto.getPhoneNumber());
-            student.setFamilyStatusId(studentDto.getFamilyStatusId());
-            student.setTemporalAddressId(studentDto.getTemporalAddressId());
-            student.setAddressId(studentDto.getAddressId());
-            student.setBirthDate(studentDto.getBirthDate());
-            student.setLastname(studentDto.getLastname());
-            student.setSurname(studentDto.getSurname());
-            student.setName(studentDto.getName());
-            Optional<Groups> optionalGroups = groupRepository.findById(studentDto.getGroupId());
-            optionalGroups.ifPresent(student::setGroups);
-            studentRepository.save(student);
-            return new Result("Student successfully updated", true);
-        }
-        return new Result("id not found ", false);
+    public Student getStudentById(Long id) {
+        return null;
     }
 }

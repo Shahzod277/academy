@@ -1,9 +1,7 @@
 package uz.jurayev.academy.service;
 
 import uz.jurayev.academy.domain.Nationality;
-import uz.jurayev.academy.domain.Relative;
 import uz.jurayev.academy.model.Result;
-import uz.jurayev.academy.rest.RelativeDto;
 
 import java.util.List;
 

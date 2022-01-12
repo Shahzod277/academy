@@ -1,7 +1,8 @@
 package uz.jurayev.academy.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import uz.jurayev.academy.domain.Groups;
+import uz.jurayev.academy.domain.Group;
 
-public interface GroupRepository extends JpaRepository<Groups, Long> {
+public interface GroupRepository extends JpaRepository<Group, Long> {
+
 }

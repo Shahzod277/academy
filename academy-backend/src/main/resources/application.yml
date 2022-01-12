@@ -1,21 +1,14 @@
 spring:
   datasource:
-<<<<<<<<< Temporary merge branch 1
-    url: jdbc:postgresql://localhost:5432/tutor_db
-    username: postgres
-    password: 9704
-=========
     url: jdbc:postgresql://localhost:5432/academy
-    username: postgres
-    password: 963
->>>>>>>>> Temporary merge branch 2
-    driver-class-name: org.postgresql.Driver
+    username: best_user
+    password: best_user
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
 
   servlet:

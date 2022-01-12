@@ -1,7 +1,6 @@
 package uz.jurayev.academy.domain;
 
 import lombok.*;
-import org.springframework.data.jpa.domain.AbstractAuditable;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -13,13 +12,10 @@ import javax.persistence.Table;
 @ToString
 @Entity
 @Table(name = "groups")
-public class Groups extends AbstractAuditable<User, Long> {
+public class Group extends AbstractData {
 
-    private String name;
-    private String courseNumber;
+    private String groupId;
+
     @ManyToOne
     private Tutor tutor;
-    @ManyToOne
-    private Direction direction;
-
 }

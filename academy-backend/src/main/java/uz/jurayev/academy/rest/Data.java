@@ -1,23 +1,9 @@
-package uz.jurayev.academy.domain;
+package uz.jurayev.academy.rest;
 
-import lombok.*;
-import org.hibernate.Hibernate;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import java.time.LocalDate;
-import java.util.Objects;
+@lombok.Data
+public class Data {
 
-@Entity
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-public class Student extends AbstractData {
-
-    private Long studentId;
+    private Long id;
     private String pinfl;
     private String serialNumber;
     private String firstname;
@@ -59,21 +45,4 @@ public class Student extends AbstractData {
     private String socialCategoryCode;
     private String socialCategoryName;
     private String educationYear;
-
-    @ManyToOne
-    private Group group;
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Student student = (Student) o;
-        return getId() != null && Objects.equals(getId(), student.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }
