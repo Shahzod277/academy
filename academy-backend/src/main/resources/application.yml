@@ -1,14 +1,14 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/academy
-    username: postgres
-    password: 963
+    username: best_user
+    password: best_user
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     show-sql: true
 
   servlet:

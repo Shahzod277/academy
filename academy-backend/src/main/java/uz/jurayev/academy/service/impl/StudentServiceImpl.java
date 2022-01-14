@@ -1,24 +1,53 @@
 package uz.jurayev.academy.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import uz.jurayev.academy.domain.Group;
+import uz.jurayev.academy.domain.ResponseToken;
+import uz.jurayev.academy.hemis_api.ResponseData;
+import uz.jurayev.academy.rest.PinflDto;
 import uz.jurayev.academy.rest.StudentInfoDto;
 import uz.jurayev.academy.domain.Student;
 import uz.jurayev.academy.model.Result;
 import uz.jurayev.academy.repository.*;
+import uz.jurayev.academy.security.SecurityConstant;
 import uz.jurayev.academy.service.StudentService;
 
+import java.net.URI;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
 
+    private final RestTemplate restTemplate = new RestTemplate();
     private final StudentRepository studentRepository;
+    private final TokenRepository tokenRepository;
     private final GroupRepository groupRepository;
 
     @Override
-   public Result save(StudentInfoDto studentInfo) {
+    public StudentInfoDto getStudentByApi(PinflDto pinflDto) {
+
+        List<ResponseToken> allToken = tokenRepository.findAll();
+        ResponseToken responseToken = allToken.get(0);
+
+        String pinfl = pinflDto.getPinfl();
+        URI baseUrl = URI.create(SecurityConstant.GET_STUDENT_URL + pinfl);
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+
+        httpHeaders.setBearerAuth(responseToken.getAccess_token());
+        HttpEntity<Object> httpEntity = new HttpEntity<>(httpHeaders);
+        ResponseEntity<ResponseData> data = restTemplate.exchange(baseUrl, HttpMethod.GET, httpEntity, ResponseData.class);
+        ResponseData body = data.getBody();
+        assert body != null;
+        return body.getData();
+    }
+
+    @Override
+   public Result save(StudentInfoDto studentInfo, Group group) {
       Student student = new Student();
       student.setStudentId(studentInfo.getId());
       student.setAccomodation_name(studentInfo.getAccomodation_code());
