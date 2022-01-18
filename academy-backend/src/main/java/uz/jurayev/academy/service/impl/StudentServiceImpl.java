@@ -30,15 +30,14 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentInfoDto getStudentByApi(PinflDto pinflDto) {
 
-        List<ResponseToken> allToken = tokenRepository.findAll();
-        ResponseToken responseToken = allToken.get(0);
+        ResponseToken token = tokenRepository.getCreatedTokenDateByDesc();
 
         String pinfl = pinflDto.getPinfl();
         URI baseUrl = URI.create(SecurityConstant.GET_STUDENT_URL + pinfl);
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 
-        httpHeaders.setBearerAuth(responseToken.getAccess_token());
+        httpHeaders.setBearerAuth(token.getAccess_token());
         HttpEntity<Object> httpEntity = new HttpEntity<>(httpHeaders);
         ResponseEntity<ResponseData> data = restTemplate.exchange(baseUrl, HttpMethod.GET, httpEntity, ResponseData.class);
         ResponseData body = data.getBody();
