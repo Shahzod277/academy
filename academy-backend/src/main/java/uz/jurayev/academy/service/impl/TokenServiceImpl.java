@@ -42,18 +42,18 @@ public class TokenServiceImpl implements TokenService {
 
         ResponseEntity<ResponseToken> response = restTemplate.postForEntity(getTokenUrl, httpEntity , ResponseToken.class);
         ResponseToken body = response.getBody();
-        assert body != null;
+//        assert body != null;
         body.setCreatedTokenDate(new Date(System.currentTimeMillis()).getTime());
         tokenRepository.save(body);
         return body;
     }
 
-        public ResponseToken refreshToken(){
-
-            ResponseToken token = tokenRepository.getCreatedTokenDateByDesc();
-            if (token.getCreatedTokenDate() + 3_600_000 <= System.currentTimeMillis()){
-               token = getToken();
-            }
-            return token;
-        }
+//        public ResponseToken refreshToken(){
+//
+//            ResponseToken token = tokenRepository.getCreatedTokenDateByDesc();
+//            if (token.getCreatedTokenDate() + 3_600_000 <= System.currentTimeMillis()){
+//               token = getToken();
+//            }
+//            return token;
+//        }
 }
