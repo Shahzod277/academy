@@ -3,57 +3,50 @@ package uz.jurayev.academy.domain;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users",
+       uniqueConstraints = {
+        @UniqueConstraint(columnNames = "username"),
+        @UniqueConstraint(columnNames = "email")
+       })
 @Getter
 @Setter
-@ToString
+@NoArgsConstructor
 public class User extends AbstractData {
 
+    @NotBlank
+    @Size(max = 20)
     private String username;
+
+    @NotBlank
+    @Size(min = 6, max = 15)
     private String password;
-    @Column(unique = true)
+
+    @NotBlank
+    @Size(max = 50)
+    @Email
     private String email;
-    @Column(unique = true)
+
     private String phoneNumber;
 
-    public User() {}
+    @ManyToMany
+    @JoinTable(name = "user_roles",
+               joinColumns = @JoinColumn(name = "user_id"),
+               inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
+    public User(String username, String email, String password){
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        this.password = password;
     }
 
     @Override

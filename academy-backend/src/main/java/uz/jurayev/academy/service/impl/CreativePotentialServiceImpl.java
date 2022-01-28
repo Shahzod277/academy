@@ -28,9 +28,9 @@ public class CreativePotentialServiceImpl implements CreativePotentialService {
         if (studentRepository.findById(creativePotentialDto.getStudentId()).isEmpty()) {
             return new Result( "Creative potential with " + creativePotentialDto.getStudentId() + "not found", false);
         }
-        creativePotential.setName(creativePotentialDto.getName());
+     /*   creativePotential.setName(creativePotentialDto.getName());
         creativePotential.setStudentId(creativePotentialDto.getStudentId());
-        creativePotentialRepository.save(creativePotential);
+        creativePotentialRepository.save(creativePotential);*/
         return new Result("creative potential saved", true);
     }
 
@@ -42,10 +42,10 @@ public class CreativePotentialServiceImpl implements CreativePotentialService {
              if (optionalStudent.isEmpty())
                  return new Result( "Creative Potential not found", false);
              if (byId.isPresent()) {
-                 CreativePotential creativePotential = byId.get();
+           /*      CreativePotential creativePotential = byId.get();
                  creativePotential.setName(creativePotentialDto.getName());
                  creativePotential.setStudentId(optionalStudent.get().getId());
-                 creativePotentialRepository.save(creativePotential);
+                 creativePotentialRepository.save(creativePotential);*/
                  return new Result("Creative Potential edited", true);
              }
              return null;

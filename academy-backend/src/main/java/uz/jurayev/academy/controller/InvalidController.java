@@ -4,8 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uz.jurayev.academy.domain.Country;
-import uz.jurayev.academy.domain.Invalid;
 import uz.jurayev.academy.model.Result;
 import uz.jurayev.academy.service.InvalidService;
 
@@ -15,7 +13,7 @@ import java.util.List;
 @RequestMapping("/api/invalid")
 @RequiredArgsConstructor
 public class InvalidController {
-
+/*
     final private InvalidService invalidService;
 
     @PostMapping()
@@ -46,5 +44,5 @@ public class InvalidController {
     public HttpEntity<?> delete(@PathVariable Long id) {
         Result delete = invalidService.delete(id);
         return ResponseEntity.status(delete.getSuccess() ? 200 : 409).body(delete);
-    }
+    }*/
 }

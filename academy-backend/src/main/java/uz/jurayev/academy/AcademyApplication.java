@@ -3,6 +3,7 @@ package uz.jurayev.academy;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 import uz.jurayev.academy.security.SecurityConstant;
 
@@ -11,6 +12,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 @SpringBootApplication
+@EnableScheduling
 public class AcademyApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {

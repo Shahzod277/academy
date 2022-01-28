@@ -20,7 +20,10 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class Tutor extends AbstractData {
 
-    @Column(name = "surname", length = 30)
+
+
+
+        @Column(name = "surname", length = 30)
     private String surname;
 
     @Column(name = "name", length = 30)
@@ -41,9 +44,6 @@ public class Tutor extends AbstractData {
     @Column(name = "phone_number", length = 15)
     private String phoneNumber;
 
-    @Column(name = "education_id")
-    private Long educationId;
-
     @Column(name = "gender_id")
     private Long genderId;
 
@@ -53,13 +53,12 @@ public class Tutor extends AbstractData {
     @Column(name = "passport_data", length = 20)
     private String passportData;
 
-    @Column(name = "experience")
+    @Column(name = "experience") //tajriba
     private Integer experience;
 
     @Column(name = "attachment_id")
     private Long attachmentId;
 
-    private String passwortData;
 
     public Long getAttachmentId() {
         return attachmentId;
@@ -99,14 +98,6 @@ public class Tutor extends AbstractData {
 
     public void setGenderId(Long genderId) {
         this.genderId = genderId;
-    }
-
-    public Long getEducationId() {
-        return educationId;
-    }
-
-    public void setEducationId(Long educationId) {
-        this.educationId = educationId;
     }
 
     public String getPhoneNumber() {

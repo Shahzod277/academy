@@ -5,6 +5,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -24,8 +25,8 @@ public class TokenServiceImpl implements TokenService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     @Override
+    @Scheduled(fixedRate = 2_592_000_000L)
     public ResponseToken getToken() {
-
         URI getTokenUrl = URI.create(SecurityConstant.GENERATE_TOKEN_URL);
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -40,7 +41,7 @@ public class TokenServiceImpl implements TokenService {
 //        ResponseEntity<ResponseToken> tokenResponseEntity = restTemplate
 //                .exchange(getTokenUrl, HttpMethod.POST, httpEntity, ResponseToken.class);
 
-        ResponseEntity<ResponseToken> response = restTemplate.postForEntity(getTokenUrl, httpEntity , ResponseToken.class);
+        ResponseEntity<ResponseToken> response = restTemplate.postForEntity(getTokenUrl, httpEntity, ResponseToken.class);
         ResponseToken body = response.getBody();
         assert body != null;
         body.setCreatedTokenDate(new Date(System.currentTimeMillis()).getTime());
@@ -48,12 +49,15 @@ public class TokenServiceImpl implements TokenService {
         return body;
     }
 
-        public ResponseToken refreshToken(){
-
-            ResponseToken token = tokenRepository.getCreatedTokenDateByDesc();
-            if (token.getCreatedTokenDate() + 3_600_000 <= System.currentTimeMillis()){
-               token = getToken();
-            }
-            return token;
-        }
+//    public ResponseToken getTokenDb() {
+//        ResponseToken token = tokenRepository.getToken();
+//
+//        if (token.getAccess_token() != null) {
+//            if (token.getExpires_in() + token.getCreatedTokenDate() > System.currentTimeMillis()) {
+//                return token;
+//            }
+//            return getToken();
+//        }
+//        return new ResponseToken();
+//    }
 }

@@ -5,8 +5,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import uz.jurayev.academy.domain.Country;
-import uz.jurayev.academy.domain.Invalid;
 import uz.jurayev.academy.model.Result;
 import uz.jurayev.academy.repository.InvalidRepository;
 import uz.jurayev.academy.service.InvalidService;
@@ -17,7 +15,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class InvalidServiceImpl implements InvalidService {
-    final private InvalidRepository invalidRepository;
+   /* final private InvalidRepository invalidRepository;
     @Override
     public Result invalidAdd(Invalid invalid) {
         if (!invalidRepository.existsByName(invalid.getName())) {
@@ -61,5 +59,5 @@ public class InvalidServiceImpl implements InvalidService {
         }catch (Exception e){
             return new Result("Xato!",false);
         }
-    }
+    }*/
 }

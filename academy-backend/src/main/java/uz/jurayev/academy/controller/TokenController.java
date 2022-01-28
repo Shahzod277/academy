@@ -17,7 +17,7 @@ public class TokenController {
 
     private final TokenServiceImpl tokenService;
 
-    @GetMapping
+    @GetMapping("get")
     public ResponseEntity<ResponseToken> getToken() {
 
         return ResponseEntity.ok(tokenService.getToken());
