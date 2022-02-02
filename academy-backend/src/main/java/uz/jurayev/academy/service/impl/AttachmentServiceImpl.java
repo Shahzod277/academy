@@ -1,8 +1,11 @@
 package uz.jurayev.academy.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.util.http.fileupload.util.mime.MimeUtility;
+import org.springframework.http.ContentDisposition;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.multipart.MultipartFile;
 import uz.jurayev.academy.domain.Attachment;
 import uz.jurayev.academy.domain.AttachmentContent;
@@ -14,7 +17,11 @@ import uz.jurayev.academy.service.AttachmentService;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,11 +79,14 @@ public class AttachmentServiceImpl implements AttachmentService {
         Optional<AttachmentContent> optionalAttachmentContent = attachmentContentRepository.getAttachmentContent(attachment.getId());
 
         if (optionalAttachmentContent.isPresent()) {
+
+            String URLEncodedFileName = URLEncoder.encode(attachment.getName(), StandardCharsets.UTF_8);
+            String ResultFileName = URLEncodedFileName.replace('+', ' ');
+
             AttachmentContent attachmentContent = optionalAttachmentContent.get();
-
-            response.setHeader("Content-Disposition", "attachment; filename=" + attachment.getName());
+            response.setCharacterEncoding("UTF-8");
+            response.setHeader("Content-Disposition", "attachment; filename*=\"utf8'ru-ru'" + ResultFileName + "\"");
             response.setContentType(attachment.getContentType());
-
             ServletOutputStream outputStream = response.getOutputStream();
             outputStream.write(attachmentContent.getValue());
             outputStream.close();

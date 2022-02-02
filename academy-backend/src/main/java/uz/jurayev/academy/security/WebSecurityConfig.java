@@ -21,11 +21,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsServiceImpl userDetailsService;
     private final AuthEntryPointJwt entryPointJwt;
-
-    @Bean
-    public AuthTokenFilter authenticationTokenFilter() {
-        return new AuthTokenFilter();
-    }
+    private final AuthTokenFilter authenticationTokenFilter;
+//    @Bean
+//    public AuthTokenFilter authenticationTokenFilter() {
+//        return new AuthTokenFilter();
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -37,12 +37,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/api/superadmin/").hasRole("SUPERADMIN")
-                .antMatchers("/api/admin/").hasRole("ADMIN")
+                .antMatchers("/api/superadmin/**").hasRole("SUPERADMIN")
+                .antMatchers("/api/admin/**").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated();
 
-        http.addFilterBefore(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override

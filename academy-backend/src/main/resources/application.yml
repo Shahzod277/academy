@@ -1,21 +1,24 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/academy
-    username: postgres
-    password: 963
+    username: best_user
+    password: best_user
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
 
   servlet:
     multipart:
       enabled: true
-      max-file-size: 500MB
-      max-request-size: 500MB
+      max-file-size: 100MB
+      max-request-size: 100MB
 springdoc:
   api-docs:
     path: /api-docs

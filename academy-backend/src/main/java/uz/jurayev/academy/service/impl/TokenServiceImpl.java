@@ -48,12 +48,12 @@ public class TokenServiceImpl implements TokenService {
         return body;
     }
 
-        public ResponseToken refreshToken(){
-
-            ResponseToken token = tokenRepository.getCreatedTokenDateByDesc();
-            if (token.getCreatedTokenDate() + 3_600_000 <= System.currentTimeMillis()){
-               token = getToken();
-            }
-            return token;
-        }
+//        public ResponseToken refreshToken(){
+//
+//            ResponseToken token = tokenRepository.getCreatedTokenDateByDesc();
+//            if (token.getCreatedTokenDate() + 3_600_000 <= System.currentTimeMillis()){
+//               token = getToken();
+//            }
+//            return token;
+//        }
 }

@@ -15,10 +15,9 @@ public class JwtUtils {
 
     private static final Logger LOG = LoggerFactory.getLogger(JwtUtils.class);
 
-
     public String generateToken(Authentication authentication) {
 
-        UserDetailsImpl principal =(UserDetailsImpl) authentication.getPrincipal();
+        UserDetailsImpl principal = (UserDetailsImpl) authentication.getPrincipal();
 
         return Jwts.builder()
                 .setSubject(principal.getEmail())

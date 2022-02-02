@@ -2,6 +2,7 @@ package uz.jurayev.academy.domain;
 
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.springframework.data.jpa.repository.EntityGraph;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -20,6 +21,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@NamedEntityGraph(name = "user_roles", attributeNodes = { @NamedAttributeNode("roles") })
 public class User extends AbstractData {
 
     @NotBlank
