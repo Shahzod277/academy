@@ -19,6 +19,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public Result addUser(User user) {
         try{
+            User newUser=new User();
+            newUser.setUsername(user.getUsername());
+            newUser.setEmail(newUser.getEmail());
             userRepository.save(user);
             return new Result("user successfully saved", true);
         }catch (Exception e){
