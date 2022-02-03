@@ -1,12 +1,17 @@
 package uz.jurayev.academy.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import uz.jurayev.academy.domain.Role;
 import uz.jurayev.academy.domain.User;
 import uz.jurayev.academy.model.Result;
+import uz.jurayev.academy.repository.RoleRepository;
 import uz.jurayev.academy.repository.UserRepository;
+import uz.jurayev.academy.rest.UserRequestDto;
 import uz.jurayev.academy.service.UserService;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,10 +20,23 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
-    public Result addUser(User user) {
+    public Result addUser(UserRequestDto userRequestDto) {
+
         try{
+            User user = new User();
+            user.setUsername(userRequestDto.getUsername());
+            user.setPassword(passwordEncoder.encode(userRequestDto.getPassword()));
+            user.setEmail(userRequestDto.getEmail());
+            user.setPhoneNumber(userRequestDto.getPhoneNumber());
+
+            if (user.getRoles() == null){
+                user.setRoles(new HashSet<>());
+            }
+            user.setRoles(userRequestDto.getRoles());
             userRepository.save(user);
             return new Result("user successfully saved", true);
         }catch (Exception e){
@@ -35,13 +53,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getOne(Long id) {
         try {
-            Optional<User> userById =
-                    userRepository.findById(id);
+            Optional<User> userById = userRepository.findById(id);
             if (userById.isEmpty()){
                 return null;
             }
             return userById.get();
-        }catch (Exception e){
+        } catch (Exception e){
             e.printStackTrace();
             return null;
         }
