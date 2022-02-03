@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uz.jurayev.academy.domain.User;
 import uz.jurayev.academy.model.Result;
+import uz.jurayev.academy.rest.UserRequestDto;
 import uz.jurayev.academy.service.impl.UserServiceImpl;
 
 @RequiredArgsConstructor
@@ -14,16 +15,17 @@ import uz.jurayev.academy.service.impl.UserServiceImpl;
 public class UserController {
 
     private final UserServiceImpl userService;
-    @PostMapping("/save")
-    public ResponseEntity<?> add(@RequestBody User user){
-        Result result = userService.addUser(user);
+
+    @PostMapping
+    public ResponseEntity<?> add(@RequestBody UserRequestDto userRequestDto){
+        Result result = userService.addUser(userRequestDto);
         if (result.getSuccess()){
             return ResponseEntity.ok(result);
         }
         return ResponseEntity.status(409).body(result);
     }
 
-    @GetMapping("/list")
+    @GetMapping
     public ResponseEntity<?> list(){
         return ResponseEntity.ok(userService.getAll());
     }
