@@ -9,12 +9,12 @@ public interface CreativePotentialService {
 
     Result save(CreativePotentialDto creativePotentialDto);
 
-    Result update(Long id, CreativePotentialDto creativePotentialDto);
+    Result update(Integer id, CreativePotentialDto creativePotentialDto);
 
     Page<CreativePotential> findAll(int page, int size);
 
-    CreativePotential getOne(Long id);
+    CreativePotential getOne(Integer id);
 
-    Result delete(Long id);
+    Result delete(Integer id);
 
 }

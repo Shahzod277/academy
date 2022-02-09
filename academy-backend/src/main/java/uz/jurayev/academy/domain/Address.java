@@ -12,7 +12,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Address extends AbstractData {
+public class Address extends AbstractData<Integer> {
 
     @ManyToOne
     private District district;

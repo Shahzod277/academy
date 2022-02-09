@@ -16,7 +16,7 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class Nationality extends AbstractData {
+public class Nationality extends AbstractData<Integer> {
 
     @Column(name = "nationality_name", length = 30)
     private String nationalityName;

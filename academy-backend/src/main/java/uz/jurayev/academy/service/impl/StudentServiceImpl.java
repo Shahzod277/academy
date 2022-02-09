@@ -28,6 +28,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
+
     TokenServiceImpl tokenService;
     private final RestTemplate restTemplate = new RestTemplate();
     private final StudentRepository studentRepository;
@@ -46,11 +47,12 @@ public class StudentServiceImpl implements StudentService {
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 
         httpHeaders.setBearerAuth(responseTokens.get(responseTokens.size() - 1).getAccess_token());
+
         HttpEntity<Object> httpEntity = new HttpEntity<>(httpHeaders);
         ResponseEntity<Data> data = restTemplate.exchange(baseUrl, HttpMethod.GET, httpEntity, Data.class);
         Data body = data.getBody();
         assert body != null;
-        return body.getData();
+        return body.getStudentInfo();
     }
 
     @Override

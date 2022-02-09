@@ -50,13 +50,13 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address getOne(Long id) {
+    public Address getOne(Integer id) {
         Optional<Address> byId = addressRepository.findById(id);
         return byId.orElse(null);
     }
 
     @Override
-    public boolean delete(Long id) {
+    public boolean delete(Integer id) {
         try {
             addressRepository.deleteById(id);
             return true;
@@ -66,7 +66,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address edit(Long id, AddressDTO addressDTO) {
+    public Address edit(Integer id, AddressDTO addressDTO) {
         Optional<District> optionalDistrict = districtRepository.findById(addressDTO.getDistrictId());
         Optional<Address> byId = addressRepository.findById(id);
 

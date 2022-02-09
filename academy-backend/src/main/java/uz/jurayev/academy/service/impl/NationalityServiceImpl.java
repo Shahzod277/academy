@@ -29,12 +29,11 @@ public class NationalityServiceImpl implements NationalityService {
 
     @Override
     public List<Nationality> getAll() {
-        List<Nationality> all = nationalityRepository.findAll();
-        return all;
+        return nationalityRepository.findAll();
     }
 
     @Override
-    public Nationality getOne(Long id) {
+    public Nationality getOne(Integer id) {
         Optional<Nationality> byId = nationalityRepository.findById(id);
         if (byId.isEmpty()) {
             return new Nationality();
@@ -43,7 +42,7 @@ public class NationalityServiceImpl implements NationalityService {
     }
 
     @Override
-    public Result update(Long id, Nationality nationality) {
+    public Result update(Integer id, Nationality nationality) {
         Optional<Nationality> byId = nationalityRepository.findById(id);
         if (byId.isPresent()) {
             Nationality nationality1 = byId.get();
@@ -55,7 +54,7 @@ public class NationalityServiceImpl implements NationalityService {
     }
 
     @Override
-    public Result delete(Long id) {
+    public Result delete(Integer id) {
         try {
             nationalityRepository.deleteById(id);
             return new Result("deleted", true);

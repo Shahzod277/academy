@@ -5,9 +5,5 @@ import uz.jurayev.academy.domain.Address;
 
 import java.util.Optional;
 
-public interface AddressRepository extends JpaRepository<Address, Long> {
-
-    Optional<Address> findById(Long id);
-
-    void deleteById(Long id);
+public interface AddressRepository extends JpaRepository<Address, Integer> {
 }

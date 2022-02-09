@@ -10,7 +10,6 @@ import uz.jurayev.academy.domain.Attachment;
 import uz.jurayev.academy.model.Result;
 import uz.jurayev.academy.service.AttachmentService;
 import uz.jurayev.academy.service.impl.AttachmentServiceImpl;
-
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
@@ -19,10 +18,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/attachment")
 public class AttachmentController {
+
     private final AttachmentServiceImpl attachmentService;
 
     @GetMapping("download/{id}")
-    public ResponseEntity<?> getFile(@PathVariable Long id, HttpServletResponse response) {
+    public ResponseEntity<?> getFile(@PathVariable Integer id, HttpServletResponse response) {
         try {
             Attachment oneFile = attachmentService.getOneFile(id, response);
             if (oneFile.getSize() > 0) {

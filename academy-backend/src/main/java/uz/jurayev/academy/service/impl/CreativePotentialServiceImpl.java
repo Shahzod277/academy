@@ -35,7 +35,7 @@ public class CreativePotentialServiceImpl implements CreativePotentialService {
     }
 
     @Override
-    public Result update(Long id, CreativePotentialDto creativePotentialDto) {
+    public Result update(Integer id, CreativePotentialDto creativePotentialDto) {
         try {
             Optional<uz.jurayev.academy.domain.CreativePotential> byId = creativePotentialRepository.findById(id);
             Optional<Student> optionalStudent = studentRepository.findById(creativePotentialDto.getStudentId() );
@@ -64,7 +64,7 @@ public class CreativePotentialServiceImpl implements CreativePotentialService {
     }
 
     @Override
-    public CreativePotential getOne(Long id) {
+    public CreativePotential getOne(Integer id) {
         try {
             Optional<CreativePotential> optionalCreativePotential = creativePotentialRepository.findById(id);
             if (optionalCreativePotential.isEmpty())
@@ -77,7 +77,7 @@ public class CreativePotentialServiceImpl implements CreativePotentialService {
     }
 
     @Override
-    public Result delete(Long id) {
+    public Result delete(Integer id) {
         try{
             creativePotentialRepository.deleteById(id);
             return new Result( "deleted", true);

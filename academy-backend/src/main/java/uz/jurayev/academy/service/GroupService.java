@@ -10,9 +10,9 @@ public interface GroupService {
 
     List<Group> getAll(int page, int size);
 
-    Group getOne(Long id);
+    Group getOne(Integer id);
 
-    Result edit(Long id, GroupDto groupDto);
+    Result edit(Integer id, GroupDto groupDto);
 
-    Result delete(Long id);
+    Result delete(Integer id);
 }

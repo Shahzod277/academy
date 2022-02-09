@@ -1,8 +1,11 @@
 package uz.jurayev.academy.hemis_api;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class RequestTokenDto {
 
     private String grant_type;

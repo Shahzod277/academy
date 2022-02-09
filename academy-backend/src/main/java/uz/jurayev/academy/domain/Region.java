@@ -12,7 +12,7 @@ import java.util.Objects;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Region extends AbstractData{
+public class Region extends AbstractData<Integer> {
 
     private String regionName;
 

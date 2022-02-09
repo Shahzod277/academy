@@ -11,7 +11,7 @@ public interface AttachmentService {
 
     Result upload(List<MultipartFile> multipartFiles);
 
-    Attachment getOneFile(Long id, HttpServletResponse response) throws Exception;
+    Attachment getOneFile(Integer id, HttpServletResponse response) throws Exception;
 
 
 }

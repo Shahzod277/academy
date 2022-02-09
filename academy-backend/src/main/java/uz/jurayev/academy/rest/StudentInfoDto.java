@@ -2,6 +2,7 @@ package uz.jurayev.academy.rest;
 
 @lombok.Data
 public class StudentInfoDto {
+
 	private String pinfl;
 	private String birthday;
 	private String firstname;

@@ -11,7 +11,8 @@ import javax.persistence.ManyToOne;
 @Setter
 @ToString
 @Entity
-public class CreativePotentialTypeCategory extends AbstractData {
+public class CreativePotentialTypeCategory extends AbstractData<Integer> {
+
     private String value; // estrada ,maqom,haykaltarosh
     @ManyToOne
     private CreativePotential creativePotential;

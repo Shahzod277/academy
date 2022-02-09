@@ -6,6 +6,7 @@ import org.hibernate.Hibernate;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -13,11 +14,11 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-public class AbstractData {
+public class AbstractData<T extends Serializable> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private T id;
 
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     @Column(updatable = false)
@@ -29,18 +30,5 @@ public class AbstractData {
     @PrePersist
     protected void onCreate(){
         this.createdDate = LocalDateTime.now();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        AbstractData that = (AbstractData) o;
-        return id != null && Objects.equals(id, that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
     }
 }

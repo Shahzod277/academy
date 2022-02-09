@@ -10,10 +10,10 @@ public interface NationalityService {
 
     List<Nationality> getAll();
 
-    Nationality getOne(Long id);
+    Nationality getOne(Integer id);
 
-    Result update(Long id, Nationality nationality);
+    Result update(Integer id, Nationality nationality);
 
-    Result delete(Long id);
+    Result delete(Integer id);
 
 }

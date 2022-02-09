@@ -24,19 +24,19 @@ public class GroupController {
         return ResponseEntity.ok(groups);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<?> getOne(@PathVariable Long id){
+    public ResponseEntity<?> getOne(@PathVariable Integer id){
         Group group = groupService.getOne(id);
         return ResponseEntity.status(group != null ? 200 : 404).body(group);
 
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id){
+    public ResponseEntity<?> delete(@PathVariable Integer id){
         Result delete = groupService.delete(id);
         return ResponseEntity.status(delete.getSuccess() ? 200 : 409).body(delete);
 
     }
     @PutMapping("/{id}")
-    public HttpEntity<?> update(@PathVariable Long id  , @RequestBody GroupDto groupDto) {
+    public HttpEntity<?> update(@PathVariable Integer id  , @RequestBody GroupDto groupDto) {
         Result update = groupService.edit(id,groupDto);
         return ResponseEntity.status(update.getSuccess() ? 200 : 400).body(update);
     }

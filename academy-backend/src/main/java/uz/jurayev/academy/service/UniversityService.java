@@ -13,9 +13,9 @@ public interface UniversityService {
 
     List<University> getAll();
 
-    University getOne(Long id);
+    University getOne(Integer id);
 
-    Result update(Long id, UniversityDto universityDto);
+    Result update(Integer id, UniversityDto universityDto);
 
-    Result delete(Long id);
+    Result delete(Integer id);
 }

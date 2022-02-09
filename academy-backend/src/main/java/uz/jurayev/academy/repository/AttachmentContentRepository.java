@@ -6,8 +6,8 @@ import uz.jurayev.academy.domain.AttachmentContent;
 
 import java.util.Optional;
 
-public interface AttachmentContentRepository extends JpaRepository<AttachmentContent, Long> {
+public interface AttachmentContentRepository extends JpaRepository<AttachmentContent, Integer> {
     @Query(value = "select * from attachment_content where attachment_id =:id", nativeQuery = true)
-    Optional<AttachmentContent> getAttachmentContent(Long id);
+    Optional<AttachmentContent> getAttachmentContent(Integer id);
 
 }

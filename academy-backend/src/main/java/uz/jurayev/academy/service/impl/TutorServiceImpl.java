@@ -24,7 +24,7 @@ public class TutorServiceImpl implements TutorService {
     }
 
     @Override
-    public Result delete(Long id) {
+    public Result delete(Integer id) {
         return null;
     }
 
@@ -34,12 +34,12 @@ public class TutorServiceImpl implements TutorService {
     }
 
     @Override
-    public TutorDto findById(Long id) {
+    public TutorDto findById(Integer id) {
         return null;
     }
 
     @Override
-    public Result update(Long id, TutorDto tutorDto) {
+    public Result update(Integer id, TutorDto tutorDto) {
         return null;
     }
 }

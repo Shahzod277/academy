@@ -14,19 +14,19 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class AttachmentContent extends AbstractData {
+public class AttachmentContent extends AbstractData<Integer> {
 
     @Column(name = "value")
     private byte[] value;
 
     @Column(name = "attachment_id")
-    private Long attachmentId;
+    private Integer attachmentId;
 
-    public Long getAttachmentId() {
+    public Integer getAttachmentId() {
         return attachmentId;
     }
 
-    public void setAttachmentId(Long attachmentId) {
+    public void setAttachmentId(Integer attachmentId) {
         this.attachmentId = attachmentId;
     }
 

@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class GroupAndStudentDto {
-    private Long studentId;
 
-    private Long GroupId;
+    private Long studentId;
+    private Integer GroupId;
 
 }

@@ -5,10 +5,7 @@ import uz.jurayev.academy.domain.Region;
 
 import java.util.Optional;
 
-public interface RegionRepository extends JpaRepository<Region, Long> {
+public interface RegionRepository extends JpaRepository<Region, Integer> {
+
     boolean existsByRegionName(String name);
-
-    Optional<Region> findById(Long id);
-
-    void deleteById(Long id);
 }

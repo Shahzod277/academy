@@ -12,7 +12,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByUsername(String username);
 
-    @EntityGraph(value = "user_roles", type = EntityGraph.EntityGraphType.FETCH)
+    @EntityGraph(value = "user.roles")
     Optional<User> findByEmail(String email);
 
     Boolean existsByUsername(String username);

@@ -16,7 +16,7 @@ public class UniverstiyController {
     private final UniversityServiceImpl universityService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getOne(@PathVariable Long id) {
+    public ResponseEntity<?> getOne(@PathVariable Integer id) {
         University one = universityService.getOne(id);
         if (one == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
@@ -39,7 +39,7 @@ public class UniverstiyController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id) {
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
         Result delete = universityService.delete(id);
         if (delete.getSuccess()) {
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(delete);
@@ -48,7 +48,7 @@ public class UniverstiyController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody UniversityDto universityDto) {
+    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody UniversityDto universityDto) {
         Result update = universityService.update(id, universityDto);
         if (update.getSuccess()) {
             return ResponseEntity.status(HttpStatus.CREATED).body(update);

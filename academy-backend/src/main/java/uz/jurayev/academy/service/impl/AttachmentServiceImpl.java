@@ -13,7 +13,6 @@ import uz.jurayev.academy.model.Result;
 import uz.jurayev.academy.repository.AttachmentContentRepository;
 import uz.jurayev.academy.repository.AttachmentRepository;
 import uz.jurayev.academy.service.AttachmentService;
-
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -67,7 +66,7 @@ public class AttachmentServiceImpl implements AttachmentService {
     }
 
     @Override
-    public Attachment getOneFile(Long id, HttpServletResponse response) throws Exception {
+    public Attachment getOneFile(Integer id, HttpServletResponse response) throws Exception {
 
         Optional<Attachment> optionalAttachment = attachmentRepository.findById(id);
 

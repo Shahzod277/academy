@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 @Setter
 @ToString
 @Entity
-public class Semester extends AbstractData {
+public class Semester extends AbstractData<Integer> {
+
     private String value;
 }

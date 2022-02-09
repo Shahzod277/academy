@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DistrictDto {
     private String name;
-    private Long regionId;
+    private Integer regionId;
 }

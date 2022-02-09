@@ -6,10 +6,6 @@ import uz.jurayev.academy.domain.Country;
 
 import java.util.Optional;
 
-public interface CountryRepository extends JpaRepository<Country, Long> {
+public interface CountryRepository extends JpaRepository<Country, Integer> {
     boolean existsByCountryName(String countryName);
-
-    Optional<Country> findById(Long id);
-
-    void deleteById(Long id);
 }

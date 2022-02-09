@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.Hibernate;
-import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -14,29 +13,20 @@ import java.util.Objects;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Role implements GrantedAuthority {
+public class Role extends AbstractData<Long> {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer roleId;
     private String roleName;
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Role role = (Role) o;
-        return roleId != null && Objects.equals(roleId, role.roleId);
+        return Objects.equals(roleName, role.roleName);
     }
 
     @Override
     public int hashCode() {
-        return getClass().hashCode();
-    }
-
-    @Override
-    public String getAuthority() {
-        return roleName;
+        return Objects.hash(roleName);
     }
 }

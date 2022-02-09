@@ -21,22 +21,22 @@ public class TutorDto {
     private LocalDate birthDate;
 
     @Column(name = "address_id")
-    private Long addressId;
+    private Integer addressId;
 
     @Column(name = "temporal_address_id")
-    private Long temporalAddressId;
+    private Integer temporalAddressId;
 
     @Column(name = "phone_number", length = 15)
     private String phoneNumber;
 
     @Column(name = "education_id")
-    private Long educationId;
+    private Integer educationId;
 
     @Column(name = "gender_id")
-    private Long genderId;
+    private Integer genderId;
 
     @Column(name = "nationality_id")
-    private Long nationalityId;
+    private Integer nationalityId;
 
     @Column(name = "passport_data", length = 20)
     private String passportData;
@@ -44,7 +44,6 @@ public class TutorDto {
     @Column(name = "experience")
     private Integer experience;
 
-
     @Column(name = "attachment_id")
-    private Long attachmentId;
+    private Integer attachmentId;
 }

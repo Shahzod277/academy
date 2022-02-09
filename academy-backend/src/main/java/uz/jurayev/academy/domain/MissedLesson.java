@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 @ToString
 @Entity
 //qoldirilgan darslar cllassi
-public class    MissedLesson extends AbstractData {
+public class MissedLesson extends AbstractData<Integer> {
 
     @ManyToOne
     private Semester semester;

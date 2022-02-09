@@ -15,7 +15,7 @@ import java.util.Objects;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Student extends AbstractData {
+public class Student extends AbstractData<Long> {
 
     @Column(nullable = false,unique = true)
     private String pinfl;

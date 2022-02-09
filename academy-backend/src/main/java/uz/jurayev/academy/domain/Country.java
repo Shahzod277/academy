@@ -13,7 +13,7 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Entity
-public class Country extends AbstractData {
+public class Country extends AbstractData<Integer> {
 
     private String countryName;
 

@@ -20,7 +20,9 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User extends AbstractData {
+@NamedEntityGraph(name = "user.roles",
+        attributeNodes = @NamedAttributeNode("roles"))
+public class User extends AbstractData<Long> {
 
     @NotBlank
     @Size(max = 20)

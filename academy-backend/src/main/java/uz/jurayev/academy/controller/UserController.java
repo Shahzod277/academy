@@ -11,7 +11,7 @@ import uz.jurayev.academy.service.impl.UserServiceImpl;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/user")
 public class UserController {
 
     private final UserServiceImpl userService;

@@ -11,9 +11,9 @@ public interface RegionService {
 
     List<Region> getAll(int page, int size);
 
-    Region getOne(Long id);
+    Region getOne(Integer id);
 
-    Region edit(Long id, RegionDto regionDto);
+    Region edit(Integer id, RegionDto regionDto);
 
-    boolean delete(Long id);
+    boolean delete(Integer id);
 }

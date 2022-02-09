@@ -30,19 +30,19 @@ public class CountryController {
     }
 
     @GetMapping("/{id}")
-    public HttpEntity<?> getOne(@PathVariable Long id) {
+    public HttpEntity<?> getOne(@PathVariable Integer id) {
         Country country = countryService.getOne(id);
         return ResponseEntity.status(country != null ? 200 : 409).body(country);
     }
 
     @PutMapping("/{id}")
-    public HttpEntity<?> editCountry(@PathVariable Long id, @RequestBody Country country) {
+    public HttpEntity<?> editCountry(@PathVariable Integer id, @RequestBody Country country) {
         Country countryEdit = countryService.edit(id, country);
         return ResponseEntity.status(countryEdit != null ? 202 : 409).body(countryEdit);
     }
 
     @DeleteMapping("/{id}")
-    public HttpEntity<?> delete(@PathVariable Long id) {
+    public HttpEntity<?> delete(@PathVariable Integer id) {
         boolean delete = countryService.delete(id);
         if (delete)
             return ResponseEntity.noContent().build();

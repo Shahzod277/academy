@@ -14,7 +14,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @ToString
 @Table(name = "api_token")
-public class ResponseToken extends AbstractData{
+public class ResponseToken extends AbstractData<Integer> {
 
     private String access_token;
     private String token_type;

@@ -14,7 +14,7 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class Attachment extends AbstractData {
+public class Attachment extends AbstractData<Integer> {
 
     @Column(name = "name", length = 250)
     private String name;

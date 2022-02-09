@@ -31,19 +31,19 @@ public class TutorController {
     }
 
     @GetMapping("/{id}")
-    public HttpEntity<?> getOne(@PathVariable Long id) {
+    public HttpEntity<?> getOne(@PathVariable Integer id) {
         TutorDto tutor = tutorService.findById(id);
         return ResponseEntity.status(tutor != null ? 200 : 409).body(tutor);
     }
 
     @DeleteMapping("/{id}")
-    public HttpEntity<?> delete(@PathVariable Long id) {
+    public HttpEntity<?> delete(@PathVariable Integer id) {
         Result delete = tutorService.delete(id);
         return ResponseEntity.status(delete.getSuccess() ? 200 : 409).body(delete);
     }
 
     @PutMapping("/{id}")
-    public HttpEntity<?> edit(@PathVariable Long id, @RequestBody TutorDto tutorDto) {
+    public HttpEntity<?> edit(@PathVariable Integer id, @RequestBody TutorDto tutorDto) {
         Result result = tutorService.update(id, tutorDto);
         return ResponseEntity.status(result != null ? 202 : 409).body(result);
     }

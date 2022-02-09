@@ -33,6 +33,8 @@ public class UserServiceImpl implements UserService {
             user.setEmail(userRequestDto.getEmail());
             user.setPhoneNumber(userRequestDto.getPhoneNumber());
 
+            roleRepository.saveAllAndFlush(userRequestDto.getRoles());
+
             if (user.getRoles() == null){
                 user.setRoles(new HashSet<>());
             }

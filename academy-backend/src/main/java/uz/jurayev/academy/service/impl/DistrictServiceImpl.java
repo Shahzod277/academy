@@ -46,32 +46,32 @@ public class DistrictServiceImpl implements DistrictService {
     }
 
     @Override
-    public District getOne(Long id) {
+    public District getOne(Integer id) {
         Optional<District> byId = districtRepository.findById(id);
         return byId.orElse(null);
     }
 
     @Override
-    public Result edit(Long id, DistrictDto districtDto) {
+    public Result edit(Integer id, DistrictDto districtDto) {
         Optional<Region> regionOptional = regionRepository.findById(districtDto.getRegionId());
         Optional<District> byId = districtRepository.findById(id);
         if (byId.isPresent()){
             District districtEdit = byId.get();
             districtEdit.setDistrictName(districtDto.getName());
             districtEdit.setRegion(regionOptional.get());
-             districtRepository.save(districtEdit);
-            return new Result("updated successfull",true);
+            districtRepository.save(districtEdit);
+            new Result("Successful update", true);
         }
-        return new Result("id not found ",false);
+        return null;
     }
 
     @Override
-    public Result delete(Long id) {
+    public Result delete(Integer id) {
         try {
             districtRepository.deleteById(id);
-            return new Result("deleted",true);
+            return new Result("Deleted successfully", true);
         } catch (Exception e) {
-            return new Result("id not found ",false);
+            return new Result("Deleted error", false);
         }
     }
 }

@@ -26,7 +26,7 @@ public class CreativePotentialController {
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody CreativePotentialDto creativePotentialDto){
+    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody CreativePotentialDto creativePotentialDto){
         Result update = creativePotentialService.update(id, creativePotentialDto);
         if (update.getSuccess())
             return ResponseEntity.ok(update);
@@ -40,7 +40,7 @@ public class CreativePotentialController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getOne(@PathVariable Long id){
+    public ResponseEntity<?> getOne(@PathVariable Integer id){
         CreativePotential one = creativePotentialService.getOne(id);
         if (one != null)
             return ResponseEntity.ok(one);
@@ -48,7 +48,7 @@ public class CreativePotentialController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id){
+    public ResponseEntity<?> delete(@PathVariable Integer id){
         Result delete = creativePotentialService.delete(id);
         if (delete.getSuccess())
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(delete);

@@ -11,13 +11,13 @@ public class RelativeDto {
 
     private String lastname;
 
-    private Long addressId;
+    private Integer addressId;
 
     private String phoneNumber;
 
-    private Long invalidId;
+    private Integer invalidId;
 
-    private Long relativesTypeId;
+    private Integer relativesTypeId;
 
-    private Long benefitId;
+    private Integer benefitId;
 }

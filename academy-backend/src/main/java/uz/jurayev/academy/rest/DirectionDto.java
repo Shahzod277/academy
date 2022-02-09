@@ -9,5 +9,5 @@ import lombok.*;
 @NoArgsConstructor
 public class DirectionDto {
     private String name;
-    private Long facultyId;
+    private Integer facultyId;
 }

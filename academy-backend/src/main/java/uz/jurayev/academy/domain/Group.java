@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @ToString
 @Entity
 @Table(name = "groups")
-public class Group extends AbstractData {
+public class Group extends AbstractData<Integer> {
 
     private String groupId;
 

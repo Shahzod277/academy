@@ -20,7 +20,7 @@ public class NationalityController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getOne(@PathVariable Long id) {
+    public ResponseEntity<?> getOne(@PathVariable Integer id) {
         Nationality one = nationalityService.getOne(id);
         if (one == null) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
@@ -29,7 +29,7 @@ public class NationalityController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id) {
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
         Result delete = nationalityService.delete(id);
         if (delete.getSuccess()) {
             return ResponseEntity.ok(delete);
@@ -47,7 +47,7 @@ public class NationalityController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Nationality nationality) {
+    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody Nationality nationality) {
         Result update = nationalityService.update(id, nationality);
         if (update.getSuccess()) {
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(update);

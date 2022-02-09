@@ -32,19 +32,17 @@ public class UniversityServiceImpl implements UniversityService {
     @Override
     public List<University> getAll() {
 
-        List<University> all = universityRepository.findAll();
-
-        return all;
+        return universityRepository.findAll();
     }
 
     @Override
-    public University getOne(Long id) {
+    public University getOne(Integer id) {
         Optional<University> optionalUniversity = universityRepository.findById(id);
         return optionalUniversity.orElse(null);
     }
 
     @Override
-    public Result update(Long id, UniversityDto universityDto) {
+    public Result update(Integer id, UniversityDto universityDto) {
         Optional<University> optionalUniversity = universityRepository.findById(id);
         if (optionalUniversity.isEmpty()) {
             return new Result("id not found " + id + "", false);
@@ -56,7 +54,7 @@ public class UniversityServiceImpl implements UniversityService {
     }
 
     @Override
-    public Result delete(Long id) {
+    public Result delete(Integer id) {
         try {
             universityRepository.deleteById(id);
             return new Result("deleted", true);

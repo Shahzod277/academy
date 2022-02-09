@@ -7,8 +7,8 @@ import java.util.List;
 public interface TutorService {
 
     Result create(TutorDto tutorDto);
-    Result delete(Long id);
+    Result delete(Integer id);
     List<TutorDto> findAll();
-    TutorDto findById(Long id);
-    Result update(Long id, TutorDto tutorDto);
+    TutorDto findById(Integer id);
+    Result update(Integer id, TutorDto tutorDto);
 }

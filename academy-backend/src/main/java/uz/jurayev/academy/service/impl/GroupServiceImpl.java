@@ -18,6 +18,7 @@ import java.util.Optional;
 
 @Service
 public class GroupServiceImpl implements GroupService {
+
     @Autowired
     private GroupRepository groupRepository;
     @Autowired
@@ -44,13 +45,13 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public Group getOne(Long id) {
+    public Group getOne(Integer id) {
         Optional<Group> optionalGroup = groupRepository.findById(id);
         return optionalGroup.orElse(null);
     }
 
     @Override
-    public Result edit(Long id, GroupDto groupDto) {
+    public Result edit(Integer id, GroupDto groupDto) {
         Optional<Group> optionalGroup = groupRepository.findById(id);
         if (optionalGroup.isEmpty()) {
             return new Result("id not found ", false);
@@ -69,7 +70,7 @@ public class GroupServiceImpl implements GroupService {
 
 
     @Override
-    public Result delete(Long id) {
+    public Result delete(Integer id) {
         try {
             groupRepository.deleteById(id);
             return new Result("deleted group", true);
