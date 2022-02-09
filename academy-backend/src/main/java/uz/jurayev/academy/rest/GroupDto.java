@@ -3,9 +3,11 @@ package uz.jurayev.academy.rest;
 import lombok.Data;
 
 @Data
-public class GroupsDto {
+public class GroupDto {
+    private Long id;
+
     private String name;
-    private String courseNumber;
+
     private Long tutorId;
-    private Long directionId;
+
 }

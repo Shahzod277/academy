@@ -13,7 +13,7 @@ public interface DistrictService {
 
     District getOne(Long id);
 
-    District edit(Long id, DistrictDto districtDto);
+    Result edit(Long id, DistrictDto districtDto);
 
-    boolean delete(Long id);
+    Result delete(Long id);
 }

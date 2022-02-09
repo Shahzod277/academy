@@ -17,6 +17,7 @@ import uz.jurayev.academy.response.JwtResponse;
 import uz.jurayev.academy.rest.LoginRequest;
 import uz.jurayev.academy.security.JwtUtils;
 import uz.jurayev.academy.service.impl.UserDetailsImpl;
+
 import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;

@@ -16,6 +16,6 @@ public class Group extends AbstractData {
 
     private String groupId;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Tutor tutor;
 }

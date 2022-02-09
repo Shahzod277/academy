@@ -1,6 +1,7 @@
 package uz.jurayev.academy.service;
 
 import uz.jurayev.academy.domain.Group;
+import uz.jurayev.academy.rest.GroupAndStudentDto;
 import uz.jurayev.academy.rest.PinflDto;
 import uz.jurayev.academy.rest.StudentInfoDto;
 import uz.jurayev.academy.domain.Student;
@@ -15,4 +16,5 @@ public interface StudentService {
     List<Student> findAll(int page, int size);
     Student getStudentById(Long id);
     StudentInfoDto getStudentByApi(PinflDto pinflDto);
+    Result updateStudent(GroupAndStudentDto groupAndStudentDto);
 }

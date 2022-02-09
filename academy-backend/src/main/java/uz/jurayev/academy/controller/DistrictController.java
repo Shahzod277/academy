@@ -41,16 +41,14 @@ public class DistrictController {
 
     @PutMapping("/{id}")
     public HttpEntity<?> edit(@PathVariable Long id, @RequestBody DistrictDto districtDto) {
-        District districtEdit = districtService.edit(id, districtDto);
-        return ResponseEntity.status(districtEdit != null ? 202 : 409).body(districtEdit);
+        Result districtEdit = districtService.edit(id, districtDto);
+        return ResponseEntity.status(districtEdit.getSuccess() ? 202 : 409).body(districtEdit);
     }
 
     @DeleteMapping("/{id}")
     public HttpEntity<?> delete(@PathVariable Long id) {
-        boolean delete = districtService.delete(id);
-        if (delete)
-            return ResponseEntity.noContent().build();
-        return ResponseEntity.notFound().build();
+        Result delete = districtService.delete(id);
+        return ResponseEntity.status(delete.getSuccess() ? 202 : 409).body(delete);
     }
 }
 
