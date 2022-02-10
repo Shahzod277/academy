@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgres://ksazpmxsfdcpkc:0149b103d4872fc3944823f9ef5e13052f5a57f8aac6e3db0a02a3f3a25bd275@ec2-54-224-64-114.compute-1.amazonaws.com:5432/d3oq5jn65cq9n9
+    url: jdbc:postgresql://ec2-54-224-64-114.compute-1.amazonaws.com:5432/d3oq5jn65cq9n9
     username: ksazpmxsfdcpkc
     password: 0149b103d4872fc3944823f9ef5e13052f5a57f8aac6e3db0a02a3f3a25bd275
   liquibase:
@@ -8,7 +8,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
