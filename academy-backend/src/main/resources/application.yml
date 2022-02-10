@@ -1,14 +1,14 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/academy
-    username: best_user
-    password: best_user
+    url: jdbc:postgres://ksazpmxsfdcpkc:0149b103d4872fc3944823f9ef5e13052f5a57f8aac6e3db0a02a3f3a25bd275@ec2-54-224-64-114.compute-1.amazonaws.com:5432/d3oq5jn65cq9n9
+    username: ksazpmxsfdcpkc
+    password: 0149b103d4872fc3944823f9ef5e13052f5a57f8aac6e3db0a02a3f3a25bd275
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
 
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     show-sql: true
     properties:
       hibernate:
